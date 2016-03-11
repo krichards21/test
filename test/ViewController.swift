@@ -26,7 +26,7 @@ class ViewController: UIViewController {
 //                        print(locationName, " \(locationID)")
 //                        }
 //                    }
-                    
+                
                     if let dict = json[0] as? Dictionary<String, AnyObject>{
                         if let locationName = dict["LocationName"] as? String,
                             let locationID = dict["LocationID"] as? Int,

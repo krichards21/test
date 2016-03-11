@@ -88,6 +88,10 @@
                             <imageView userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="designmindlogo" translatesAutoresizingMaskIntoConstraints="NO" id="DOv-1E-B9z">
                                 <rect key="frame" x="261" y="620" width="94" height="32"/>
                             </imageView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Nm-X1-0S0">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="62"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.30196078431372547" green="0.16862745098039217" blue="0.062745098039215685" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
