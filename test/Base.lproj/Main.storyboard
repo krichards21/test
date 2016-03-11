@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="test" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleAspectFit" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EXF-VO-5es">
+                                <rect key="frame" x="117" y="102" width="190" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="C9S-gc-T29"/>
+                                    <constraint firstAttribute="width" constant="259" id="EgU-6y-CJE"/>
+                                    <constraint firstAttribute="width" constant="259" id="bq4-BT-vSG"/>
+                                    <constraint firstAttribute="width" constant="190" id="ky5-5x-RQG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="EgU-6y-CJE"/>
+                                        <exclude reference="bq4-BT-vSG"/>
+                                    </mask>
+                                </variation>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FZL-Cp-MVi">
+                                <rect key="frame" x="28" y="105" width="45.5" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="67" id="JFc-qC-Vpn"/>
+                                    <constraint firstAttribute="height" constant="21" id="njd-zo-EKy"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="JFc-qC-Vpn"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xbh-zP-7NA">
+                                <rect key="frame" x="20" y="157" width="78.5" height="26"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zbf-a7-CqC">
+                                <rect key="frame" x="117" y="155" width="190" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="190" id="Q2e-wV-Fq8"/>
+                                    <constraint firstAttribute="height" constant="30" id="RpI-oj-dBG"/>
+                                    <constraint firstAttribute="width" constant="259" id="ac1-aH-bHQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="ac1-aH-bHQ"/>
+                                    </mask>
+                                </variation>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0fL-yq-qdv">
+                                <rect key="frame" x="265" y="206" width="42" height="30"/>
+                                <color key="backgroundColor" red="0.81176470590000005" green="0.72156862749999995" blue="0.63921568630000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <size key="titleShadowOffset" width="2.2250738585072014e-308" height="0.0"/>
+                                <state key="normal" title="Log In">
+                                    <color key="titleShadowColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fWV-ZL-bik"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="regal-logo" translatesAutoresizingMaskIntoConstraints="NO" id="6wz-rx-m1A">
+                                <rect key="frame" x="0.0" y="305" width="375" height="191"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="designmindlogo" translatesAutoresizingMaskIntoConstraints="NO" id="DOv-1E-B9z">
+                                <rect key="frame" x="261" y="620" width="94" height="32"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.30196078431372547" green="0.16862745098039217" blue="0.062745098039215685" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="zbf-a7-CqC" firstAttribute="trailing" secondItem="0fL-yq-qdv" secondAttribute="trailing" id="0S1-NI-jjM"/>
+                            <constraint firstItem="zbf-a7-CqC" firstAttribute="centerY" secondItem="xbh-zP-7NA" secondAttribute="centerY" id="1pT-Vu-IPU"/>
+                            <constraint firstItem="FZL-Cp-MVi" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="12" id="3L4-F8-0xs"/>
+                            <constraint firstItem="zbf-a7-CqC" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="155" id="3xk-sz-bNQ"/>
+                            <constraint firstItem="FZL-Cp-MVi" firstAttribute="baseline" secondItem="EXF-VO-5es" secondAttribute="baseline" id="A3k-4b-9yx"/>
+                            <constraint firstItem="EXF-VO-5es" firstAttribute="leading" secondItem="FZL-Cp-MVi" secondAttribute="trailing" constant="43" id="H9B-A6-Qly"/>
+                            <constraint firstItem="zbf-a7-CqC" firstAttribute="leading" secondItem="xbh-zP-7NA" secondAttribute="trailing" constant="18" id="KEf-eI-62a"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="zbf-a7-CqC" secondAttribute="trailing" constant="52" id="MPB-Nv-naq"/>
+                            <constraint firstItem="0fL-yq-qdv" firstAttribute="top" secondItem="zbf-a7-CqC" secondAttribute="bottom" constant="21" id="amS-Ef-aOK"/>
+                            <constraint firstItem="xbh-zP-7NA" firstAttribute="top" secondItem="FZL-Cp-MVi" secondAttribute="bottom" constant="31" id="eEG-hT-mxK"/>
+                            <constraint firstItem="zbf-a7-CqC" firstAttribute="top" secondItem="EXF-VO-5es" secondAttribute="bottom" constant="23" id="gZU-8b-04i"/>
+                            <constraint firstItem="zbf-a7-CqC" firstAttribute="leading" secondItem="EXF-VO-5es" secondAttribute="leading" id="qGO-yB-DH4"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="EXF-VO-5es" secondAttribute="trailing" constant="52" id="rH1-qI-4il"/>
+                            <constraint firstItem="EXF-VO-5es" firstAttribute="leading" secondItem="FZL-Cp-MVi" secondAttribute="trailing" constant="43" id="tV8-zf-Rqs"/>
+                            <constraint firstItem="EXF-VO-5es" firstAttribute="leading" secondItem="zbf-a7-CqC" secondAttribute="leading" id="wc6-6f-CtB"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="3L4-F8-0xs"/>
+                                <exclude reference="tV8-zf-Rqs"/>
+                                <exclude reference="MPB-Nv-naq"/>
+                                <exclude reference="qGO-yB-DH4"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="txtPassword" destination="zbf-a7-CqC" id="Ms2-t2-fsy"/>
+                        <outlet property="txtUsername" destination="EXF-VO-5es" id="cAt-WV-FPf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="244.5" y="304.5"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="designmindlogo" width="300" height="120"/>
+        <image name="regal-logo" width="960" height="210"/>
+    </resources>
+</document>
