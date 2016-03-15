@@ -14,6 +14,8 @@ class LocationCell: UICollectionViewCell {
     @IBOutlet weak var distanceLbl: UILabel!
     @IBOutlet weak var statusLbl: UILabel!
     @IBOutlet weak var lastVisitDate: UILabel!
+    @IBOutlet weak var locationBtn: UIButton!
+    @IBOutlet weak var directionsBtn: UIButton!
     
     var location: SWLocation!
     
