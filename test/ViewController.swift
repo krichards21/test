@@ -17,15 +17,6 @@ class ViewController: UIViewController {
                 do {
                     let json = try NSJSONSerialization.JSONObjectWithData(responseData, options: NSJSONReadingOptions.AllowFragments)
                     
-//                    if let dict = json[0] as? Dictionary<String, AnyObject> {
-//                                            //print("what: \(dict)")
-//                        if let locationName = dict["LocationName"] as? String, let locationID = dict["LocationID"] as? Int, let address1 = dict["Address1"] as? String,
-//                        let address2 = dict["Address2"] as? String,
-//                            //let address3 = dict["Address3"] as? String,
-//                            let city = dict["City"] as? String{
-//                        print(locationName, " \(locationID)")
-//                        }
-//                    }
                 
                     if let dict = json[0] as? Dictionary<String, AnyObject>{
                         if let locationName = dict["LocationName"] as? String,
@@ -40,10 +31,11 @@ class ViewController: UIViewController {
                             let hoursEnd = dict["HourEnd"] as? String,
                             let daysOpen = dict["DaysOpen"] as? String,
                             let googleMapsSmall = dict["GoogleMapSmall"] as? String,
-                            let googleMapsMedium = dict["GoogleMapMedium"] as? String{
+                            let googleMapsMedium = dict["GoogleMapMedium"] as? String,
+                            let imageUrl = dict["ImageURL"] as? String{
                             
                             let location = SWLocation(locationName: locationName,
-                                address1: address1, address2: address2, address3: address3, city: city, state: state, postalCode: postalCode, locationID: locationID, googleMapsSmall: googleMapsSmall, googleMapsMedium: googleMapsMedium, hoursStart: hoursStart, hoursEnd: hoursEnd, daysOpen: daysOpen)
+                                address1: address1, address2: address2, address3: address3, city: city, state: state, postalCode: postalCode, locationID: locationID, googleMapsSmall: googleMapsSmall, googleMapsMedium: googleMapsMedium, hoursStart: hoursStart, hoursEnd: hoursEnd, daysOpen: daysOpen, imageURL: imageUrl)
                             
                             print(location.locationName)
                         }

@@ -24,6 +24,7 @@ class SWLocation {
     private var _daysOpen: String!
     private var _googleMapsSmall: String!
     private var _googleMapsMedium: String!
+    private var _imageURL: String!
     
     var locationID: Int{
         get {
@@ -103,7 +104,13 @@ class SWLocation {
         }
     }
     
-    init(locationName: String, address1: String, address2: String, address3: String, city: String, state: String, postalCode: String, locationID: Int, googleMapsSmall: String, googleMapsMedium: String, hoursStart: String, hoursEnd: String, daysOpen: String){
+    var imageURL: String{
+        get {
+            return _imageURL
+        }
+    }
+    
+    init(locationName: String, address1: String, address2: String, address3: String, city: String, state: String, postalCode: String, locationID: Int, googleMapsSmall: String, googleMapsMedium: String, hoursStart: String, hoursEnd: String, daysOpen: String, imageURL: String){
         _LocationID = locationID
         _locationName = locationName
         _address1 = address1
@@ -117,5 +124,6 @@ class SWLocation {
         _daysOpen = daysOpen
         _googleMapsSmall = googleMapsSmall
         _googleMapsMedium = googleMapsMedium
+        _imageURL = imageURL
     }
 }
