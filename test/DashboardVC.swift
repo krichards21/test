@@ -17,9 +17,10 @@ class DashboardVC: UIViewController, UICollectionViewDelegate, UICollectionViewD
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        //createLoction()
+        loadLocations()
         collection.delegate = self
         collection.dataSource = self
-        loadLocations()
     }
 
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -28,7 +29,7 @@ class DashboardVC: UIViewController, UICollectionViewDelegate, UICollectionViewD
 //            let location = SWLocation(locationName: "BOB", address1: "BOB", address2: "BOB", address3: "BOB", city: "BOB", state: "BOB", postalCode: "BOB", locationID: 1, googleMapsSmall: "BOB", googleMapsMedium: "BOB", hoursStart: "BOB", hoursEnd: "BOB", daysOpen: "BOB", imageURL:"http://photos.wikimapia.org/p/00/02/59/10/52_big.jpg")
             let location = fetchedLocation[indexPath.row]
             cell.configureLocationCell(location)
-            print(fetchedLocation.first!.locationName!)
+            print(location.locationName)
             return cell
         }else {
             return UICollectionViewCell()
@@ -48,7 +49,7 @@ class DashboardVC: UIViewController, UICollectionViewDelegate, UICollectionViewD
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSize(width: 420, height: 110)
+        return CGSize(width: 300, height: 120)
     }
     
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
@@ -59,7 +60,7 @@ class DashboardVC: UIViewController, UICollectionViewDelegate, UICollectionViewD
         
         do{
             fetchedLocation = try managedObjectContext.executeFetchRequest(locationFetch) as! [SWLocation]
-            
+            print(fetchedLocation.first!.locationID)
         }catch{
             fatalError("ooooo \(error)")
         }

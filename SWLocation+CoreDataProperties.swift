@@ -1,8 +1,8 @@
 //
-//  Entity+CoreDataProperties.swift
+//  SWLocation+CoreDataProperties.swift
 //  
 //
-//  Created by Kimate Richards on 3/15/16.
+//  Created by Kimate Richards on 3/16/16.
 //
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -12,10 +12,10 @@
 import Foundation
 import CoreData
 
-extension Entity {
+extension SWLocation {
 
-    @NSManaged var locationName: String?
-    @NSManaged var locationId: NSNumber?
     @NSManaged var imageURL: String?
+    @NSManaged var locationID: NSNumber?
+    @NSManaged var locationName: String?
 
 }
