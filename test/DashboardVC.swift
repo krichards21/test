@@ -9,27 +9,38 @@
 import UIKit
 import CoreData
 
-class DashboardVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class DashboardVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
     @IBOutlet weak var collection: UICollectionView!
+     @IBOutlet weak var searchBar: UISearchBar!
+
     let managedObjectContext = DataController().managedObjectContext
 
+
     var fetchedLocation = [SWLocation]()
+    var inSearchmode = false
+    var filteredLocations = [SWLocation]()
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //createLoction()
+        createLoction()
         loadLocations()
         collection.delegate = self
         collection.dataSource = self
+        searchBar.delegate = self
     }
 
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCellWithReuseIdentifier("LocationCell", forIndexPath: indexPath) as? LocationCell{
             
-//            let location = SWLocation(locationName: "BOB", address1: "BOB", address2: "BOB", address3: "BOB", city: "BOB", state: "BOB", postalCode: "BOB", locationID: 1, googleMapsSmall: "BOB", googleMapsMedium: "BOB", hoursStart: "BOB", hoursEnd: "BOB", daysOpen: "BOB", imageURL:"http://photos.wikimapia.org/p/00/02/59/10/52_big.jpg")
-            let location = fetchedLocation[indexPath.row]
+            let location: SWLocation!
+            if inSearchmode{
+                location = filteredLocations[indexPath.row]
+            }else{
+                location = fetchedLocation[indexPath.row]
+            }
+        
             cell.configureLocationCell(location)
-            print(location.locationName)
+            
             return cell
         }else {
             return UICollectionViewCell()
@@ -41,6 +52,9 @@ class DashboardVC: UIViewController, UICollectionViewDelegate, UICollectionViewD
     }
 
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if inSearchmode{
+            return filteredLocations.count
+        }
         return fetchedLocation.count
     }
     
@@ -70,7 +84,9 @@ class DashboardVC: UIViewController, UICollectionViewDelegate, UICollectionViewD
         let urlString = "http://dmlm.azurewebsites.net/location/getlocations/"
         let session = NSURLSession.sharedSession()
         let url = NSURL(string: urlString)
-        loadLocations()
+        for entity in self.fetchedLocation{
+            self.managedObjectContext.deleteObject(entity)
+        }
         
         session.dataTaskWithURL(url!){
             (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
@@ -121,5 +137,15 @@ class DashboardVC: UIViewController, UICollectionViewDelegate, UICollectionViewD
             }
             }.resume()
     }
-
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text == nil || searchBar.text == "" {
+            inSearchmode = false
+            collection.reloadData()
+        }else{
+            inSearchmode = true
+            let lower = searchBar.text!.lowercaseString
+            filteredLocations = fetchedLocation.filter({$0.locationName.lowercaseString.rangeOfString(lower) != nil})
+            collection.reloadData()
+        }
+    }
 }
