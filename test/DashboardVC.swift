@@ -27,6 +27,7 @@ class DashboardVC: UIViewController, UICollectionViewDelegate, UICollectionViewD
         collection.delegate = self
         collection.dataSource = self
         searchBar.delegate = self
+        searchBar.returnKeyType = UIReturnKeyType.Done
     }
 
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -48,7 +49,13 @@ class DashboardVC: UIViewController, UICollectionViewDelegate, UICollectionViewD
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-
+        let location: SWLocation!
+        if inSearchmode{
+            location = filteredLocations[indexPath.row]
+        }else{
+            location = fetchedLocation[indexPath.row]
+        }
+        performSegueWithIdentifier("LocationDetailVC", sender: location)
     }
 
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -137,15 +144,31 @@ class DashboardVC: UIViewController, UICollectionViewDelegate, UICollectionViewD
             }
             }.resume()
     }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        view.endEditing(true)
+    }
+    
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         if searchBar.text == nil || searchBar.text == "" {
             inSearchmode = false
             collection.reloadData()
+            view.endEditing(true)
         }else{
             inSearchmode = true
             let lower = searchBar.text!.lowercaseString
             filteredLocations = fetchedLocation.filter({$0.locationName.lowercaseString.rangeOfString(lower) != nil})
             collection.reloadData()
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "LocationDetailVC"{
+            if let detailsVC = segue.destinationViewController as? LocationDetailVC{
+                if let locate = sender as? SWLocation{
+                    detailsVC.location = locate
+                }
+            }
         }
     }
 }

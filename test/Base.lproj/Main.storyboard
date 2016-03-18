@@ -183,38 +183,41 @@
                         <outlet property="collection" destination="RoM-RS-kcE" id="a2m-Ix-mJl"/>
                         <outlet property="searchBar" destination="ODd-eQ-Qt0" id="qaw-Ob-5Ph"/>
                         <outlet property="view" destination="xMk-g0-srO" id="BAh-8C-cbG"/>
+                        <segue destination="udh-E4-KlJ" kind="show" identifier="LocationDetailVC" id="uk6-Uu-rMA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ltx-ps-Hcb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1465.5" y="311.5"/>
+            <point key="canvasLocation" x="1493.5" y="298.5"/>
         </scene>
-        <!--Store DetailVC-->
+        <!--Location DetailVC-->
         <scene sceneID="WDI-E6-v6i">
             <objects>
-                <viewController id="udh-E4-KlJ" customClass="StoreDetailVC" customModule="test" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="udh-E4-KlJ" customClass="LocationDetailVC" customModule="test" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Vae-XQ-1Ch"/>
                         <viewControllerLayoutGuide type="bottom" id="55v-UN-irx"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="gCm-EX-77L">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wOc-ZF-kIR">
-                                <rect key="frame" x="148" y="66" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="FormButton:" destination="udh-E4-KlJ" eventType="touchUpInside" id="6Zq-39-drW"/>
-                                </connections>
-                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1iR-8L-udc">
+                                <rect key="frame" x="112" y="141" width="233" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.30196078430000001" green="0.16862745100000001" blue="0.062745098040000002" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <connections>
+                        <outlet property="LocationName" destination="1iR-8L-udc" id="ade-o9-OZS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HMa-3M-eci" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2077" y="278"/>
+            <point key="canvasLocation" x="2076.5" y="277.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="1Zs-Wp-luA">

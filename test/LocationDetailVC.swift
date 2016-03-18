@@ -1,24 +1,30 @@
 //
-//  StoreDetailVC.swift
+//  LocationDetailVC.swift
 //  test
 //
-//  Created by Kimate Richards on 3/14/16.
+//  Created by Kimate Richards on 3/17/16.
 //  Copyright © 2016 designmind. All rights reserved.
 //
 
 import UIKit
 
-class StoreDetailVC: UIViewController {
+class LocationDetailVC: UIViewController {
+    var location: SWLocation!
+    @IBOutlet weak var locationName: UILabel!
 
     override func viewDidLoad() {
+    
         super.viewDidLoad()
-
+        print(location.locationName)
+        locationName.text = location.locationName
         // Do any additional setup after loading the view.
     }
-    
-    
-    @IBAction func FormButton(sender: AnyObject) {
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
+    
 
     /*
     // MARK: - Navigation
