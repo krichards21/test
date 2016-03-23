@@ -81,7 +81,6 @@ class DashboardVC: UIViewController, UICollectionViewDelegate, UICollectionViewD
         
         do{
             fetchedLocation = try managedObjectContext.executeFetchRequest(locationFetch) as! [SWLocation]
-            print(fetchedLocation.first!.locationID)
         }catch{
             fatalError("ooooo \(error)")
         }
@@ -102,7 +101,7 @@ class DashboardVC: UIViewController, UICollectionViewDelegate, UICollectionViewD
                     let json = try NSJSONSerialization.JSONObjectWithData(responseData, options: NSJSONReadingOptions.AllowFragments)
                     
                     
-                    for var jsonArrayNode = 0; jsonArrayNode < json.count; jsonArrayNode++
+                    for jsonArrayNode in 0 ..< json.count
                     {
                         if let dict = json[jsonArrayNode] as? Dictionary<String, AnyObject>{
                             if let locationName = dict["LocationName"] as? String,
@@ -128,7 +127,12 @@ class DashboardVC: UIViewController, UICollectionViewDelegate, UICollectionViewD
                                     entity.setValue(imageUrl, forKey: "imageURL")
                                     
                                     do {
-                                        try self.managedObjectContext.save()
+                                        if let arrayfound = self.fetchedLocation.indexOf({$0.locationID == locationID})
+                                        {
+                                            print(arrayfound)
+                                        }else{
+                                            try self.managedObjectContext.save()
+                                        }
                                     } catch {
                                         fatalError("Failure to save context: \(error)")
                                     }
@@ -137,7 +141,7 @@ class DashboardVC: UIViewController, UICollectionViewDelegate, UICollectionViewD
                         
                     }
                     
-                    //print(json)
+                    print(json)
                 } catch let myError {
                     print("error: \(myError)")
                 }

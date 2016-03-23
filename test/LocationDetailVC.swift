@@ -9,15 +9,18 @@
 import UIKit
 
 class LocationDetailVC: UIViewController {
+    @IBOutlet weak var dateTxt: UITextField!
     var location: SWLocation!
     @IBOutlet weak var locationName: UILabel!
-
     override func viewDidLoad() {
     
         super.viewDidLoad()
-        print(location.locationName)
         locationName.text = location.locationName
-        // Do any additional setup after loading the view.
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
+        dateFormatter.timeStyle = NSDateFormatterStyle.NoStyle
+        let currentDate = NSDate()
+        dateTxt.text = dateFormatter.stringFromDate(currentDate)
     }
 
     override func didReceiveMemoryWarning() {
@@ -25,6 +28,20 @@ class LocationDetailVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func dateTimeEditing(sender: UITextField) {
+        let datePicker:UIDatePicker = UIDatePicker()
+        datePicker.datePickerMode = UIDatePickerMode.Date
+        sender.inputView = datePicker
+        datePicker.addTarget(self, action: #selector(LocationDetailVC.datePickerValueChanged), forControlEvents: UIControlEvents.ValueChanged)
+    }
+    
+    func datePickerValueChanged(sender:UIDatePicker){
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
+        dateFormatter.timeStyle = NSDateFormatterStyle.NoStyle
+        dateTxt.text = dateFormatter.stringFromDate(sender.date)
+    }
+
 
     /*
     // MARK: - Navigation
