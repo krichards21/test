@@ -1,5 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="15D21" minimumToolsVersion="Xcode 7.0">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15E65" minimumToolsVersion="Xcode 7.0">
+    <entity name="Entity" syncable="YES">
+        <attribute name="productDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="productID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="productName" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="InventoryEntity" syncable="YES">
+        <attribute name="cbf" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="classification" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cluster" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="coldbox" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="coldboxBrands" optional="YES" attributeType="Boolean" defaultValueString="0" syncable="YES"/>
+        <attribute name="coverage" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="current" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="dateCollected" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="display" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="displayBrands" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="largest" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="locationID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="pod" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="productID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="scematicFacings" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="totalCases" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+    </entity>
     <entity name="LocationEntity" representedClassName=".SWLocation" syncable="YES">
         <attribute name="imageURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="locationID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -7,5 +30,7 @@
     </entity>
     <elements>
         <element name="LocationEntity" positionX="-54" positionY="-9" width="128" height="90"/>
+        <element name="Entity" positionX="-36" positionY="36" width="128" height="90"/>
+        <element name="InventoryEntity" positionX="-18" positionY="63" width="128" height="285"/>
     </elements>
 </model>
