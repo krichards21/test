@@ -30,7 +30,6 @@ class DashboardVC: UIViewController, UICollectionViewDelegate, UICollectionViewD
         // if online
         self.deleteAllData()
         
-        //createLoction()
         downloadLocation(){ completion in
             if completion {
                 self.loadLocations()
@@ -50,11 +49,8 @@ class DashboardVC: UIViewController, UICollectionViewDelegate, UICollectionViewD
             if inSearchmode{
                 location = filteredLocations[indexPath.row]
             }else{
-                //self.downloadLocation({ (UIBackgroundFetchResult) -> Void in
-                    location = self.fetchedLocation[indexPath.row]
-                //})
+                 location = self.fetchedLocation[indexPath.row]
             }
-            //print(location.locationName)
 
             cell.configureLocationCell(location)
             
@@ -69,9 +65,7 @@ class DashboardVC: UIViewController, UICollectionViewDelegate, UICollectionViewD
         if inSearchmode{
             location = filteredLocations[indexPath.row]
         }else{
-            //self.downloadLocation({ (UIBackgroundFetchResult) -> Void in
                 location = self.fetchedLocation[indexPath.row]
-            //})
         }
         performSegueWithIdentifier("LocationDetailVC", sender: location)
     }
@@ -151,13 +145,10 @@ class DashboardVC: UIViewController, UICollectionViewDelegate, UICollectionViewD
                             entity.setValue(imageURL, forKey: "imageURL")
                             
                             try self.managedObjectContext.save()
-                            //print(entity.imageURL)
                             
-                            //}
                         } catch {
                             fatalError("Failure to save context: \(error)")
                         }
-                    //}
                 }
                 completionHandler(true)
             }
