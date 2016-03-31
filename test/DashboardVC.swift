@@ -8,22 +8,35 @@
 
 import UIKit
 import CoreData
+import Alamofire
+import SwiftyJSON
 
 class DashboardVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
     @IBOutlet weak var collection: UICollectionView!
      @IBOutlet weak var searchBar: UISearchBar!
 
     let managedObjectContext = DataController().managedObjectContext
+    let url = "\(URL_BASE)\(URL_LOCATION_CONTROLLER)"
 
 
     var fetchedLocation = [SWLocation]()
+    var location: SWLocation!
+
     var inSearchmode = false
     var filteredLocations = [SWLocation]()
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        createLoction()
-        loadLocations()
+        
+        // if online
+        self.deleteAllData()
+        
+        //createLoction()
+        downloadLocation(){ completion in
+            if completion {
+                self.loadLocations()
+            }
+        }
+        
         collection.delegate = self
         collection.dataSource = self
         searchBar.delegate = self
@@ -33,13 +46,16 @@ class DashboardVC: UIViewController, UICollectionViewDelegate, UICollectionViewD
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCellWithReuseIdentifier("LocationCell", forIndexPath: indexPath) as? LocationCell{
             
-            let location: SWLocation!
+            var location: SWLocation!
             if inSearchmode{
                 location = filteredLocations[indexPath.row]
             }else{
-                location = fetchedLocation[indexPath.row]
+                //self.downloadLocation({ (UIBackgroundFetchResult) -> Void in
+                    location = self.fetchedLocation[indexPath.row]
+                //})
             }
-        
+            //print(location.locationName)
+
             cell.configureLocationCell(location)
             
             return cell
@@ -53,7 +69,9 @@ class DashboardVC: UIViewController, UICollectionViewDelegate, UICollectionViewD
         if inSearchmode{
             location = filteredLocations[indexPath.row]
         }else{
-            location = fetchedLocation[indexPath.row]
+            //self.downloadLocation({ (UIBackgroundFetchResult) -> Void in
+                location = self.fetchedLocation[indexPath.row]
+            //})
         }
         performSegueWithIdentifier("LocationDetailVC", sender: location)
     }
@@ -74,80 +92,82 @@ class DashboardVC: UIViewController, UICollectionViewDelegate, UICollectionViewD
     }
     
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-        collection.reloadData()
     }
     func loadLocations(){
         let locationFetch = NSFetchRequest(entityName: "LocationEntity")
-        
         do{
+            
             fetchedLocation = try managedObjectContext.executeFetchRequest(locationFetch) as! [SWLocation]
+            for location in fetchedLocation{
+                if let locationName = location.valueForKey("locationName"),
+                let locationID = location.valueForKey("locationID"),
+                    let imageURL = location.valueForKey("imageURL"){
+                print("\(locationID) \(locationName) \(imageURL)")
+                }
+            }
+            collection.reloadData()
         }catch{
             fatalError("ooooo \(error)")
         }
     }
-    func createLoction(){
-        // need to add in a check on the latest data from the service
-        let urlString = "http://dmlm.azurewebsites.net/location/getlocations/"
-        let session = NSURLSession.sharedSession()
-        let url = NSURL(string: urlString)
-        for entity in self.fetchedLocation{
-            self.managedObjectContext.deleteObject(entity)
+    
+    func deleteAllData()
+    {
+        let locationFetch = NSFetchRequest(entityName: "LocationEntity")
+        do{
+        let entity = try managedObjectContext.executeFetchRequest(locationFetch) as! [SWLocation]
+        for location in entity{
+            managedObjectContext.deleteObject(location)
         }
-        
-        session.dataTaskWithURL(url!){
-            (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
-            if let responseData = data {
-                do {
-                    let json = try NSJSONSerialization.JSONObjectWithData(responseData, options: NSJSONReadingOptions.AllowFragments)
-                    
-                    
-                    for jsonArrayNode in 0 ..< json.count
-                    {
-                        if let dict = json[jsonArrayNode] as? Dictionary<String, AnyObject>{
-                            if let locationName = dict["LocationName"] as? String,
-                                let locationID = dict["LocationID"] as? Int,
-                                //                                let address3 = dict["Address3"] as? String,
-                                //                                let address2 = dict["Address2"] as? String,
-                                //                                let address1 = dict["Address1"] as? String,
-                                //                                let city = dict["City"] as? String,
-                                //                                let state = dict["State"] as? String,
-                                //                                let postalCode = dict["PostalCode"] as?String,
-                                //                                let hoursStart = dict["HourStart"] as? String,
-                                //                                let hoursEnd = dict["HourEnd"] as? String,
-                                //                                let daysOpen = dict["DaysOpen"] as? String,
-                                //                                let googleMapsSmall = dict["GoogleMapSmall"] as? String,
-                                //                                let googleMapsMedium = dict["GoogleMapMedium"] as? String,
-                                let imageUrl = dict["ImageURL"] as? String{
-
-                                    
-                                    let entity = NSEntityDescription.insertNewObjectForEntityForName("LocationEntity", inManagedObjectContext: self.managedObjectContext) as! SWLocation
-                                    
-                                    entity.setValue(locationName, forKey: "locationName")
-                                    entity.setValue(locationID, forKey: "locationID")
-                                    entity.setValue(imageUrl, forKey: "imageURL")
-                                    
-                                    do {
-                                        if let arrayfound = self.fetchedLocation.indexOf({$0.locationID == locationID})
-                                        {
-                                            print(arrayfound)
-                                        }else{
-                                            try self.managedObjectContext.save()
-                                        }
-                                    } catch {
-                                        fatalError("Failure to save context: \(error)")
-                                    }
-                            }
-                        }
-                        
-                    }
-                    
-                    print(json)
-                } catch let myError {
-                    print("error: \(myError)")
-                }
-            }
-            }.resume()
+        try managedObjectContext.save()
+        }catch{
+            print(error)
+        }
     }
+    
+    func downloadLocation(completionHandler:(Bool) -> ()){
+        let locationURL = NSURL(string: "\(URL_BASE)location/getlocations/")!
+        let parameters = [
+            "ServiceProvider": SERVICE_PROVIDER
+        ]
+        Alamofire.request(.GET, locationURL, parameters: parameters).responseJSON {
+            response in
+            let result = response.result
+            if result.isSuccess
+            {
+                let json = JSON(response.result.value!)
+                for jsonArrayNode in json.array!
+                {
+                    let locationName = jsonArrayNode["LocationName"].stringValue
+                    let locationID = jsonArrayNode["LocationID"].intValue
+                    let imageURL = jsonArrayNode["ImageURL"].stringValue
+       
+
+                        do {
+                                let entity = NSEntityDescription.insertNewObjectForEntityForName("LocationEntity", inManagedObjectContext: self.managedObjectContext) as! SWLocation
+
+                            entity.setValue(locationID, forKey: "locationID")
+                            entity.setValue(locationName, forKey: "locationName")
+                            entity.setValue(imageURL, forKey: "imageURL")
+                            
+                            try self.managedObjectContext.save()
+                            //print(entity.imageURL)
+                            
+                            //}
+                        } catch {
+                            fatalError("Failure to save context: \(error)")
+                        }
+                    //}
+                }
+                completionHandler(true)
+            }
+            else{
+                completionHandler(false)
+            }
+            
+        }
+    }
+    
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         view.endEditing(true)

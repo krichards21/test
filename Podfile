@@ -5,5 +5,6 @@ use_frameworks!
 
 target 'test' do
 pod 'Alamofire', '~> 3.0'
+pod 'SwiftyJSON'
 end
 

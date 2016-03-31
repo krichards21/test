@@ -14,3 +14,4 @@ let URL_PRODUCT_CONTROLLER = "product"
 
 let URL_INVENTORY_CONTROLLER = "inventory"
 typealias DownloadComplete = () -> ()
+let SERVICE_PROVIDER = 1

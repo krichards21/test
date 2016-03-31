@@ -12,6 +12,8 @@ class LocationDetailVC: UIViewController {
     @IBOutlet weak var dateTxt: UITextField!
     var location: SWLocation!
     @IBOutlet weak var locationName: UILabel!
+    
+    
     override func viewDidLoad() {
     
         super.viewDidLoad()

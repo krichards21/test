@@ -26,11 +26,16 @@ class LocationCell: UICollectionViewCell {
     func configureLocationCell(location: SWLocation)
     {
         self.location = location
+        //print(location.imageURL)
+        //print(self.location.locationID)
         //locationNameLbl.text = self.location.locationName
-        if let imageUrl = NSURL(string: self.location.imageURL){
-            if let data = NSData(contentsOfURL: imageUrl){
-                thumbnailImg.image = UIImage(data: data)
+        if self.location.imageURL != nil{
+            if let imageUrl = NSURL(string: self.location.imageURL){
+                if let data = NSData(contentsOfURL: imageUrl){
+                    thumbnailImg.image = UIImage(data: data)
+                }
             }
         }
+        //print(location.locationID)
     }
 }

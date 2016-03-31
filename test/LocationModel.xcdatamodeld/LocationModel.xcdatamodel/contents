@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15E65" minimumToolsVersion="Xcode 7.0">
-    <entity name="Entity" syncable="YES">
-        <attribute name="productDescription" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="productID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="productName" optional="YES" attributeType="String" syncable="YES"/>
-    </entity>
-    <entity name="InventoryEntity" syncable="YES">
+    <entity name="InventoryEntity" representedClassName=".InventoryEntity" syncable="YES">
         <attribute name="cbf" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="classification" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="cluster" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -24,13 +19,31 @@
         <attribute name="totalCases" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
     </entity>
     <entity name="LocationEntity" representedClassName=".SWLocation" syncable="YES">
+        <attribute name="address1" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="address2" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="address3" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="county" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="googleMapMedium" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="googleMapSmall" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="imageURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="locationID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="locationName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="operatingDays" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="operatingHoursEnd" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="operationHoursStart" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="postalCode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="ProductEntity" representedClassName=".ProductEntity" syncable="YES">
+        <attribute name="productDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="productID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="productName" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="LocationEntity" positionX="-54" positionY="-9" width="128" height="90"/>
-        <element name="Entity" positionX="-36" positionY="36" width="128" height="90"/>
         <element name="InventoryEntity" positionX="-18" positionY="63" width="128" height="285"/>
+        <element name="LocationEntity" positionX="-54" positionY="-9" width="128" height="285"/>
+        <element name="ProductEntity" positionX="-36" positionY="36" width="128" height="90"/>
     </elements>
 </model>
