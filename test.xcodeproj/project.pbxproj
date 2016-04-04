@@ -25,6 +25,8 @@
 		78EEDB741CADC50500646730 /* NotoSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 78EEDB711CADC50500646730 /* NotoSans-BoldItalic.ttf */; };
 		78EEDB751CADC50500646730 /* NotoSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 78EEDB721CADC50500646730 /* NotoSans-Italic.ttf */; };
 		78EEDC081CB2F29D00646730 /* SWLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EEDC071CB2F29D00646730 /* SWLocation.swift */; };
+		78EEDC0A1CB317E100646730 /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EEDC091CB317E100646730 /* MapController.swift */; };
+		78EEDC0C1CB31A8900646730 /* LocationAnnotations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EEDC0B1CB31A8900646730 /* LocationAnnotations.swift */; };
 		C762A7047243CB6B03CC7A97 /* Pods_test.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3C517497590F4C4B95AD545 /* Pods_test.framework */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +53,8 @@
 		78EEDB711CADC50500646730 /* NotoSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NotoSans-BoldItalic.ttf"; path = "../../../../Downloads/Noto-unhinted/NotoSans-BoldItalic.ttf"; sourceTree = "<group>"; };
 		78EEDB721CADC50500646730 /* NotoSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NotoSans-Italic.ttf"; path = "../../../../Downloads/Noto-unhinted/NotoSans-Italic.ttf"; sourceTree = "<group>"; };
 		78EEDC071CB2F29D00646730 /* SWLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWLocation.swift; sourceTree = "<group>"; };
+		78EEDC091CB317E100646730 /* MapController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
+		78EEDC0B1CB31A8900646730 /* LocationAnnotations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationAnnotations.swift; sourceTree = "<group>"; };
 		C3C517497590F4C4B95AD545 /* Pods_test.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_test.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -110,6 +114,7 @@
 				7828C1FF1C73FED40095F80E /* ViewController.swift */,
 				781874F91C9742350009ADAD /* DashboardVC.swift */,
 				781875101C9B73C90009ADAD /* LocationDetailVC.swift */,
+				78EEDC091CB317E100646730 /* MapController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -135,6 +140,7 @@
 		7828C1FC1C73FED40095F80E /* test */ = {
 			isa = PBXGroup;
 			children = (
+				78EEDC0B1CB31A8900646730 /* LocationAnnotations.swift */,
 				781874F01C933B990009ADAD /* Model */,
 				7828C1FD1C73FED40095F80E /* AppDelegate.swift */,
 				781874FF1C976EC20009ADAD /* View */,
@@ -294,9 +300,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				7828C2001C73FED40095F80E /* ViewController.swift in Sources */,
+				78EEDC0A1CB317E100646730 /* MapController.swift in Sources */,
 				781875041C98ABE20009ADAD /* Constaints.swift in Sources */,
 				781875111C9B73C90009ADAD /* LocationDetailVC.swift in Sources */,
 				781874FA1C9742350009ADAD /* DashboardVC.swift in Sources */,
+				78EEDC0C1CB31A8900646730 /* LocationAnnotations.swift in Sources */,
 				781874F41C935F230009ADAD /* SWProduct.swift in Sources */,
 				7818750B1C98B6480009ADAD /* DataController.swift in Sources */,
 				781875011C976F2C0009ADAD /* LocationCell.swift in Sources */,

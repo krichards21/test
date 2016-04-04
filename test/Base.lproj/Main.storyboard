@@ -132,6 +132,64 @@
             </objects>
             <point key="canvasLocation" x="1056.5" y="304.5"/>
         </scene>
+        <!--Map Controller-->
+        <scene sceneID="qJf-AI-9Zk">
+            <objects>
+                <viewController id="dM2-ao-QO8" customClass="MapController" customModule="test" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="f3Y-DP-khR"/>
+                        <viewControllerLayoutGuide type="bottom" id="uxx-mH-Sfe"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hdr-er-K4K">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Bh5-fI-3im">
+                                <rect key="frame" x="10" y="136" width="355" height="415"/>
+                            </mapView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="gb8-xR-ZOC">
+                                <rect key="frame" x="10" y="72" width="268" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="268" id="7lP-bj-2wG"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mNY-Jl-z8n">
+                                <rect key="frame" x="299" y="74" width="52" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="Rz2-zo-ach"/>
+                                    <constraint firstAttribute="width" constant="52" id="vFV-Wj-23S"/>
+                                    <constraint firstAttribute="height" constant="44" id="xhn-Fy-Lj7"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="1459830239_files-folders-43"/>
+                                <connections>
+                                    <segue destination="oYA-39-hbE" kind="show" id="bJR-O5-aCU"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="mNY-Jl-z8n" secondAttribute="trailing" constant="8" id="2vb-sb-UNv"/>
+                            <constraint firstItem="Bh5-fI-3im" firstAttribute="top" secondItem="mNY-Jl-z8n" secondAttribute="bottom" constant="18" id="KFn-Qk-ayC"/>
+                            <constraint firstItem="mNY-Jl-z8n" firstAttribute="top" secondItem="f3Y-DP-khR" secondAttribute="bottom" constant="10" id="NoI-DF-uJo"/>
+                            <constraint firstItem="uxx-mH-Sfe" firstAttribute="top" secondItem="Bh5-fI-3im" secondAttribute="bottom" constant="72" id="X8N-bv-rnb"/>
+                            <constraint firstItem="Bh5-fI-3im" firstAttribute="centerX" secondItem="hdr-er-K4K" secondAttribute="centerX" id="Zpd-Va-BbL"/>
+                            <constraint firstItem="mNY-Jl-z8n" firstAttribute="leading" secondItem="gb8-xR-ZOC" secondAttribute="trailing" constant="21" id="agn-4h-5bF"/>
+                            <constraint firstItem="Bh5-fI-3im" firstAttribute="leading" secondItem="gb8-xR-ZOC" secondAttribute="leading" id="g8z-rU-59B"/>
+                            <constraint firstItem="gb8-xR-ZOC" firstAttribute="top" secondItem="f3Y-DP-khR" secondAttribute="bottom" constant="8" id="mpZ-H1-nj1"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="listBtn" destination="mNY-Jl-z8n" id="zhA-V7-Pjp"/>
+                        <outlet property="locationMap" destination="Bh5-fI-3im" id="GtU-Jg-SHP"/>
+                        <outlet property="searchBar" destination="gb8-xR-ZOC" id="ixB-Kr-pVR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qT4-hR-8tj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1762.5" y="-613.5"/>
+        </scene>
         <!--DashboardVC-->
         <scene sceneID="Xbx-l9-ORr">
             <objects>
@@ -145,7 +203,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="RoM-RS-kcE">
-                                <rect key="frame" x="16" y="214" width="339" height="396"/>
+                                <rect key="frame" x="16" y="170" width="339" height="396"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="396" id="WOH-ux-hag"/>
@@ -159,7 +217,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="LocationCell" id="GAf-Si-hCC" customClass="LocationCell" customModule="test">
-                                        <rect key="frame" x="33" y="64" width="274" height="156"/>
+                                        <rect key="frame" x="32.5" y="0.0" width="274" height="156"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="274" height="156"/>
@@ -286,67 +344,61 @@
                                     </mask>
                                 </variation>
                             </collectionView>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="ODd-eQ-Qt0">
-                                <rect key="frame" x="24" y="132" width="268" height="44"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dHn-cN-ZX0">
+                                <rect key="frame" x="310" y="89" width="52" height="44"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="268" id="4wC-rX-PeL"/>
+                                    <constraint firstAttribute="height" constant="44" id="35x-Gd-lvt"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="Hbk-I5-AEa"/>
+                                    <constraint firstAttribute="width" constant="52" id="dzn-Tz-xqZ"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="1459822610_Social_Media_Socialmedia_network_share_socialnetwork_network-15"/>
+                                <connections>
+                                    <segue destination="dM2-ao-QO8" kind="show" id="F7P-TZ-NTE"/>
+                                </connections>
+                            </button>
+                            <searchBar contentMode="redraw" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ODd-eQ-Qt0">
+                                <rect key="frame" x="20" y="89" width="268" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="268" id="DKb-Xq-2Ha"/>
                                 </constraints>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1459822610_Social_Media_Socialmedia_network_share_socialnetwork_network-14" translatesAutoresizingMaskIntoConstraints="NO" id="IfJ-T4-OJb">
-                                <rect key="frame" x="313" y="132" width="52" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="51" id="DzN-WY-1nW"/>
-                                    <constraint firstAttribute="height" constant="44" id="tJf-zW-sOA"/>
-                                    <constraint firstAttribute="width" constant="52" id="z3B-qo-2h8"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="52" id="zWh-Nn-wUW"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="DzN-WY-1nW"/>
-                                    </mask>
-                                </variation>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.30196078430000001" green="0.16862745100000001" blue="0.062745098040000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="IfJ-T4-OJb" secondAttribute="trailing" constant="-6" id="1Wl-3L-hQx"/>
-                            <constraint firstItem="RoM-RS-kcE" firstAttribute="top" secondItem="IfJ-T4-OJb" secondAttribute="bottom" constant="8" symbolic="YES" id="25r-t4-P8g"/>
-                            <constraint firstItem="RoM-RS-kcE" firstAttribute="top" secondItem="IfJ-T4-OJb" secondAttribute="bottom" constant="38" id="5j5-2G-z5J"/>
+                            <constraint firstItem="dHn-cN-ZX0" firstAttribute="leading" secondItem="ODd-eQ-Qt0" secondAttribute="trailing" constant="22" id="8Y1-QD-vVU"/>
                             <constraint firstAttribute="trailingMargin" secondItem="RoM-RS-kcE" secondAttribute="trailing" constant="4" id="9aW-PC-E7A"/>
                             <constraint firstItem="RoM-RS-kcE" firstAttribute="trailing" secondItem="xMk-g0-srO" secondAttribute="trailingMargin" id="DXs-8k-HqM"/>
                             <constraint firstItem="RoM-RS-kcE" firstAttribute="leading" secondItem="xMk-g0-srO" secondAttribute="leadingMargin" constant="15" id="IeU-6i-dAU"/>
                             <constraint firstItem="RoM-RS-kcE" firstAttribute="leading" secondItem="xMk-g0-srO" secondAttribute="leadingMargin" id="Mkw-7I-zeU"/>
+                            <constraint firstItem="ODd-eQ-Qt0" firstAttribute="leading" secondItem="xMk-g0-srO" secondAttribute="leadingMargin" constant="4" id="P4y-7z-3VU"/>
                             <constraint firstItem="taK-6j-Z6b" firstAttribute="top" secondItem="RoM-RS-kcE" secondAttribute="bottom" constant="57" id="PSF-wY-V6m"/>
                             <constraint firstItem="ODd-eQ-Qt0" firstAttribute="leading" secondItem="xMk-g0-srO" secondAttribute="leadingMargin" constant="9" id="T3Y-sz-8kf"/>
-                            <constraint firstItem="IfJ-T4-OJb" firstAttribute="leading" secondItem="ODd-eQ-Qt0" secondAttribute="trailing" constant="21" id="VVr-eo-mGz"/>
                             <constraint firstItem="ODd-eQ-Qt0" firstAttribute="leading" secondItem="xMk-g0-srO" secondAttribute="leadingMargin" constant="9" id="Xu6-mL-7y2"/>
                             <constraint firstItem="RoM-RS-kcE" firstAttribute="leading" secondItem="xMk-g0-srO" secondAttribute="leadingMargin" id="aWK-Xc-cRg"/>
-                            <constraint firstItem="IfJ-T4-OJb" firstAttribute="leading" secondItem="ODd-eQ-Qt0" secondAttribute="trailing" constant="13" id="cLz-fv-zbi"/>
+                            <constraint firstItem="ODd-eQ-Qt0" firstAttribute="top" secondItem="dHn-cN-ZX0" secondAttribute="top" id="jUm-oQ-Tcm"/>
                             <constraint firstItem="RoM-RS-kcE" firstAttribute="leading" secondItem="xMk-g0-srO" secondAttribute="leadingMargin" id="jrM-FL-AJs"/>
-                            <constraint firstItem="RoM-RS-kcE" firstAttribute="leading" secondItem="IfJ-T4-OJb" secondAttribute="leading" id="lwO-6b-Kvm"/>
                             <constraint firstAttribute="trailingMargin" secondItem="RoM-RS-kcE" secondAttribute="trailing" constant="4" id="spV-Zs-apS"/>
-                            <constraint firstItem="IfJ-T4-OJb" firstAttribute="top" secondItem="Xwg-2A-j2d" secondAttribute="bottom" constant="34" id="tr1-6L-CUH"/>
+                            <constraint firstItem="ODd-eQ-Qt0" firstAttribute="top" secondItem="Xwg-2A-j2d" secondAttribute="bottom" constant="25" id="twa-2k-FtG"/>
                             <constraint firstItem="taK-6j-Z6b" firstAttribute="top" secondItem="RoM-RS-kcE" secondAttribute="bottom" constant="57" id="vMN-Hh-zOv"/>
-                            <constraint firstItem="IfJ-T4-OJb" firstAttribute="top" secondItem="ODd-eQ-Qt0" secondAttribute="top" id="zaI-S1-F0d"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="T3Y-sz-8kf"/>
                                 <exclude reference="Xu6-mL-7y2"/>
-                                <exclude reference="25r-t4-P8g"/>
                                 <exclude reference="DXs-8k-HqM"/>
                                 <exclude reference="IeU-6i-dAU"/>
                                 <exclude reference="aWK-Xc-cRg"/>
                                 <exclude reference="jrM-FL-AJs"/>
-                                <exclude reference="lwO-6b-Kvm"/>
                                 <exclude reference="spV-Zs-apS"/>
-                                <exclude reference="cLz-fv-zbi"/>
-                                <exclude reference="tr1-6L-CUH"/>
                                 <exclude reference="PSF-wY-V6m"/>
                             </mask>
                         </variation>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem title="Item" id="DgS-3E-hfP"/>
+                    </toolbarItems>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="collection" destination="RoM-RS-kcE" id="a2m-Ix-mJl"/>
                         <outlet property="searchBar" destination="ODd-eQ-Qt0" id="qaw-Ob-5Ph"/>
@@ -510,8 +562,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="1459822610_Social_Media_Socialmedia_network_share_socialnetwork_network-14" width="128" height="127"/>
+        <image name="1459822610_Social_Media_Socialmedia_network_share_socialnetwork_network-15" width="128" height="127"/>
+        <image name="1459830239_files-folders-43" width="128" height="128"/>
         <image name="designmindlogo" width="300" height="120"/>
         <image name="regal-logo" width="960" height="210"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="bJR-O5-aCU"/>
+    </inferredMetricsTieBreakers>
 </document>
