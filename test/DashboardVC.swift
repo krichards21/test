@@ -13,8 +13,8 @@ import SwiftyJSON
 
 class DashboardVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
     @IBOutlet weak var collection: UICollectionView!
-     @IBOutlet weak var searchBar: UISearchBar!
-
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     let managedObjectContext = DataController().managedObjectContext
     let url = "\(URL_BASE)\(URL_LOCATION_CONTROLLER)"
 
@@ -35,6 +35,7 @@ class DashboardVC: UIViewController, UICollectionViewDelegate, UICollectionViewD
                 self.loadLocations()
             }
         }
+        
         
         collection.delegate = self
         collection.dataSource = self
