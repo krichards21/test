@@ -9,7 +9,7 @@
 import MapKit
 import CoreLocation
 
-class MapController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
+class MapController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UISearchBarDelegate {
     let locationManager = CLLocationManager()
         @IBOutlet weak var locationMap: MKMapView!
         @IBOutlet weak var searchBar: UISearchBar!
@@ -31,6 +31,8 @@ class MapController: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
         super.viewDidLoad()
         locationMap.delegate = self
         self.locationManager.delegate = self
+        searchBar.delegate = self
+        searchBar.returnKeyType = UIReturnKeyType.Done
         
         
         for address in addressArray {
@@ -118,4 +120,17 @@ class MapController: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
         }
     }
 
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text == nil || searchBar.text == "" {
+            inSearchmode = false
+            //collection.reloadData()
+            view.endEditing(true)
+        }else{
+            inSearchmode = true
+            let lower = searchBar.text!.lowercaseString
+            filteredLocations = fetchedLocation.filter({$0.locationName!.lowercaseString.rangeOfString(lower) != nil})
+            //collection.reloadData()
+        }
+    }
 }
