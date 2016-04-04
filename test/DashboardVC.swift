@@ -135,6 +135,13 @@ class DashboardVC: UIViewController, UICollectionViewDelegate, UICollectionViewD
                     let locationName = jsonArrayNode["LocationName"].stringValue
                     let locationID = jsonArrayNode["LocationID"].intValue
                     let imageURL = jsonArrayNode["ImageURL"].stringValue
+                    let address1 = jsonArrayNode["Address1"].stringValue
+                    let address2 = jsonArrayNode["Address2"].stringValue
+                    let address3 = jsonArrayNode["Address3"].stringValue
+                    let city = jsonArrayNode["City"].stringValue
+                    let state = jsonArrayNode["State"].stringValue
+                    let postalCode = jsonArrayNode["PostalCode"].stringValue
+                    
        
 
                         do {
@@ -143,6 +150,12 @@ class DashboardVC: UIViewController, UICollectionViewDelegate, UICollectionViewD
                             entity.setValue(locationID, forKey: "locationID")
                             entity.setValue(locationName, forKey: "locationName")
                             entity.setValue(imageURL, forKey: "imageURL")
+                            entity.setValue(address1, forKey: "address1")
+                            entity.setValue(address2, forKey: "address2")
+                            entity.setValue(address3, forKey: "address3")
+                            entity.setValue(city, forKey: "city")
+                            entity.setValue(state, forKey: "state")
+                            entity.setValue(postalCode, forKey: "postalCode")
                             
                             try self.managedObjectContext.save()
                             
