@@ -11,10 +11,12 @@ import UIKit
 class LocationCell: UICollectionViewCell {
     @IBOutlet weak var thumbnailImg: UIImageView!
 
-    
+
+    var location: SWLocation!
+    @IBOutlet weak var hoursLbl: UILabel!
+    @IBOutlet weak var cityLbl: UILabel!
     @IBOutlet weak var address1Lbl: UILabel!
     @IBOutlet weak var nameLbl: UILabel!
-    var location: SWLocation!
     
     required init?(coder aDecoder: NSCoder){
         super.init(coder: aDecoder)
@@ -25,7 +27,7 @@ class LocationCell: UICollectionViewCell {
         self.location = location
 
         if self.location.imageURL != nil{
-            if let imageUrl = NSURL(string: self.location.imageURL){
+            if let imageUrl = NSURL(string: self.location.imageURL!){
                 if let data = NSData(contentsOfURL: imageUrl){
                     thumbnailImg.image = UIImage(data: data)
                 }
@@ -35,6 +37,13 @@ class LocationCell: UICollectionViewCell {
             }
             if  self.location.address1 != nil{
                 address1Lbl.text = location.address1
+                //print(self.location.address1 )
+            }
+            if self.location.city != nil{
+                cityLbl.text = location.city
+            }
+            if self.location.hoursStart != nil{
+                hoursLbl.text = location.hoursStart! + "-" + location.hoursEnd!
             }
         }
         //print(location.locationID)

@@ -92,13 +92,13 @@ class DashboardVC: UIViewController, UICollectionViewDelegate, UICollectionViewD
         do{
             
             fetchedLocation = try managedObjectContext.executeFetchRequest(locationFetch) as! [SWLocation]
-            for location in fetchedLocation{
-                if let locationName = location.valueForKey("locationName"),
-                let locationID = location.valueForKey("locationID"),
-                    let imageURL = location.valueForKey("imageURL"){
-                print("\(locationID) \(locationName) \(imageURL)")
-                }
-            }
+//            for location in fetchedLocation{
+//                if let locationName = location.valueForKey("locationName"),
+//                let locationID = location.valueForKey("locationID"),
+//                    let imageURL = location.valueForKey("imageURL"){
+//                //print("\(locationID) \(locationName) \(imageURL)\(location.valueForKey("hoursStart"))")
+//                }
+//            }
             collection.reloadData()
         }catch{
             fatalError("ooooo \(error)")
@@ -141,6 +141,8 @@ class DashboardVC: UIViewController, UICollectionViewDelegate, UICollectionViewD
                     let city = jsonArrayNode["City"].stringValue
                     let state = jsonArrayNode["State"].stringValue
                     let postalCode = jsonArrayNode["PostalCode"].stringValue
+                    let hoursStart = jsonArrayNode["HourStart"].stringValue
+                    let hoursEnd = jsonArrayNode["HourEnd"].stringValue
                     
        
 
@@ -156,6 +158,8 @@ class DashboardVC: UIViewController, UICollectionViewDelegate, UICollectionViewD
                             entity.setValue(city, forKey: "city")
                             entity.setValue(state, forKey: "state")
                             entity.setValue(postalCode, forKey: "postalCode")
+                            entity.setValue(hoursStart, forKey: "hoursStart")
+                            entity.setValue(hoursEnd, forKey: "hoursEnd")
                             
                             try self.managedObjectContext.save()
                             
@@ -185,7 +189,7 @@ class DashboardVC: UIViewController, UICollectionViewDelegate, UICollectionViewD
         }else{
             inSearchmode = true
             let lower = searchBar.text!.lowercaseString
-            filteredLocations = fetchedLocation.filter({$0.locationName.lowercaseString.rangeOfString(lower) != nil})
+            filteredLocations = fetchedLocation.filter({$0.locationName!.lowercaseString.rangeOfString(lower) != nil})
             collection.reloadData()
         }
     }
