@@ -169,6 +169,7 @@ class MapController: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
             inSearchmode = true
             let lower = searchBar.text!.lowercaseString
             filteredLocations = fetchedLocation.filter({$0.locationName!.lowercaseString.rangeOfString(lower) != nil})
+            self.locationMap.removeAnnotations(self.locationMap.annotations)
             for location in filteredLocations{
                 if let address1 = location.valueForKey("address1"),
                     
@@ -177,7 +178,6 @@ class MapController: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
                     let postalCode = location.valueForKey("postalCode"){
                     var address = (address1 as! String) + ", " + (city as! String)
                     address += ", " + (state as! String) + " " + (postalCode as! String)
-                    self.locationMap.removeAnnotations(self.locationMap.annotations)
                     getPlacemarkFromAddress(address)
                 }
             }
