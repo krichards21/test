@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		781874F41C935F230009ADAD /* SWProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781874F31C935F230009ADAD /* SWProduct.swift */; };
 		781874FA1C9742350009ADAD /* DashboardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781874F91C9742350009ADAD /* DashboardVC.swift */; };
 		781875011C976F2C0009ADAD /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781875001C976F2C0009ADAD /* LocationCell.swift */; };
 		781875041C98ABE20009ADAD /* Constaints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781875031C98ABE20009ADAD /* Constaints.swift */; };
@@ -27,13 +26,15 @@
 		78EEDC081CB2F29D00646730 /* SWLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EEDC071CB2F29D00646730 /* SWLocation.swift */; };
 		78EEDC0A1CB317E100646730 /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EEDC091CB317E100646730 /* MapController.swift */; };
 		78EEDC0C1CB31A8900646730 /* LocationAnnotations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EEDC0B1CB31A8900646730 /* LocationAnnotations.swift */; };
+		78EEDC0E1CB46E3300646730 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EEDC0D1CB46E3300646730 /* HomeController.swift */; };
+		78EEDC131CB4847E00646730 /* ProductEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EEDC111CB4847E00646730 /* ProductEntity+CoreDataProperties.swift */; };
+		78EEDC141CB4847E00646730 /* ProductEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EEDC121CB4847E00646730 /* ProductEntity.swift */; };
 		C762A7047243CB6B03CC7A97 /* Pods_test.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3C517497590F4C4B95AD545 /* Pods_test.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		148087992C424669AE553A1D /* Pods-test.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test.debug.xcconfig"; path = "Pods/Target Support Files/Pods-test/Pods-test.debug.xcconfig"; sourceTree = "<group>"; };
 		200207949BA55336FFE4948F /* Pods-test.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test.release.xcconfig"; path = "Pods/Target Support Files/Pods-test/Pods-test.release.xcconfig"; sourceTree = "<group>"; };
-		781874F31C935F230009ADAD /* SWProduct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWProduct.swift; sourceTree = "<group>"; };
 		781874F91C9742350009ADAD /* DashboardVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardVC.swift; sourceTree = "<group>"; };
 		781875001C976F2C0009ADAD /* LocationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
 		781875031C98ABE20009ADAD /* Constaints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constaints.swift; sourceTree = "<group>"; };
@@ -55,6 +56,9 @@
 		78EEDC071CB2F29D00646730 /* SWLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWLocation.swift; sourceTree = "<group>"; };
 		78EEDC091CB317E100646730 /* MapController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
 		78EEDC0B1CB31A8900646730 /* LocationAnnotations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationAnnotations.swift; sourceTree = "<group>"; };
+		78EEDC0D1CB46E3300646730 /* HomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
+		78EEDC111CB4847E00646730 /* ProductEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ProductEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		78EEDC121CB4847E00646730 /* ProductEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductEntity.swift; sourceTree = "<group>"; };
 		C3C517497590F4C4B95AD545 /* Pods_test.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_test.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -82,9 +86,10 @@
 		781874F01C933B990009ADAD /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				78EEDC111CB4847E00646730 /* ProductEntity+CoreDataProperties.swift */,
+				78EEDC121CB4847E00646730 /* ProductEntity.swift */,
 				78EEDC071CB2F29D00646730 /* SWLocation.swift */,
 				78EEDB671CADBEF700646730 /* InventoryEntity.swift */,
-				781874F31C935F230009ADAD /* SWProduct.swift */,
 				7818750C1C98B8EC0009ADAD /* LocationModel.xcdatamodeld */,
 				78EBA09E1CA45F200053D9AB /* SWInventory.swift */,
 			);
@@ -115,6 +120,7 @@
 				781874F91C9742350009ADAD /* DashboardVC.swift */,
 				781875101C9B73C90009ADAD /* LocationDetailVC.swift */,
 				78EEDC091CB317E100646730 /* MapController.swift */,
+				78EEDC0D1CB46E3300646730 /* HomeController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -301,18 +307,20 @@
 			files = (
 				7828C2001C73FED40095F80E /* ViewController.swift in Sources */,
 				78EEDC0A1CB317E100646730 /* MapController.swift in Sources */,
+				78EEDC131CB4847E00646730 /* ProductEntity+CoreDataProperties.swift in Sources */,
 				781875041C98ABE20009ADAD /* Constaints.swift in Sources */,
 				781875111C9B73C90009ADAD /* LocationDetailVC.swift in Sources */,
 				781874FA1C9742350009ADAD /* DashboardVC.swift in Sources */,
 				78EEDC0C1CB31A8900646730 /* LocationAnnotations.swift in Sources */,
-				781874F41C935F230009ADAD /* SWProduct.swift in Sources */,
 				7818750B1C98B6480009ADAD /* DataController.swift in Sources */,
 				781875011C976F2C0009ADAD /* LocationCell.swift in Sources */,
 				78EEDB681CADBEF700646730 /* InventoryEntity.swift in Sources */,
 				7828C1FE1C73FED40095F80E /* AppDelegate.swift in Sources */,
 				7818750E1C98B8EC0009ADAD /* LocationModel.xcdatamodeld in Sources */,
+				78EEDC141CB4847E00646730 /* ProductEntity.swift in Sources */,
 				78EEDC081CB2F29D00646730 /* SWLocation.swift in Sources */,
 				78EBA09F1CA45F200053D9AB /* SWInventory.swift in Sources */,
+				78EEDC0E1CB46E3300646730 /* HomeController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

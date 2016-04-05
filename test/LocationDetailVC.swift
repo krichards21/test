@@ -7,11 +7,25 @@
 //
 
 import UIKit
+import CoreData
+import Alamofire
+import SwiftyJSON
 
-class LocationDetailVC: UIViewController {
+class LocationDetailVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     @IBOutlet weak var dateTxt: UITextField!
     var location: SWLocation!
+    var fetchedProduct = [ProductEntity]()
+    
+    let url = "\(URL_BASE)\(URL_PRODUCT_CONTROLLER)"
+    
+    let managedObjectContext = DataController().managedObjectContext
+    @IBOutlet weak var productPicker: UIPickerView!
+    @IBAction func submitBtn(sender: AnyObject) {
+    }
     @IBOutlet weak var locationName: UILabel!
+    
+    var productArray = ["Kendall Wines", "Jackson Wines", "White Wines"]
+    var productSelected = 0
     
     
     override func viewDidLoad() {
@@ -23,6 +37,16 @@ class LocationDetailVC: UIViewController {
         dateFormatter.timeStyle = NSDateFormatterStyle.NoStyle
         let currentDate = NSDate()
         dateTxt.text = dateFormatter.stringFromDate(currentDate)
+        productPicker.delegate = self
+        productPicker.dataSource = self
+        
+        self.deleteAllData()
+        
+        downloadProduct(){ completion in
+            if completion {
+                self.loadProducts()
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,7 +67,91 @@ class LocationDetailVC: UIViewController {
         dateFormatter.timeStyle = NSDateFormatterStyle.NoStyle
         dateTxt.text = dateFormatter.stringFromDate(sender.date)
     }
+    
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return fetchedProduct[row].productName
+    }
+    
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return fetchedProduct.count
+    }
+    
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return 1
+    }
 
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        productSelected = row
+    }
+    
+    @IBAction func submitButtonClicked(sender: AnyObject) {
+        
+    }
+    
+    func loadProducts(){
+        let productFetch = NSFetchRequest(entityName: "ProductEntity")
+        do{
+            
+            fetchedProduct = try managedObjectContext.executeFetchRequest(productFetch) as! [ProductEntity]
+            productPicker.reloadAllComponents()
+        }catch{
+            fatalError("ooooo \(error)")
+        }
+    }
+    
+    func downloadProduct(completionHandler:(Bool) -> ()){
+        let productURL = NSURL(string: "\(URL_BASE)product/getproducts/")!
+        let parameters = [
+            "ServiceProvider": SERVICE_PROVIDER
+        ]
+        Alamofire.request(.GET, productURL, parameters: parameters).responseJSON {
+            response in
+            let result = response.result
+            if result.isSuccess
+            {
+                let json = JSON(response.result.value!)
+                for jsonArrayNode in json.array!
+                {
+                    let productName = jsonArrayNode["ProductName"].stringValue
+                    let productID = jsonArrayNode["ProductID"].intValue
+                    let productDescription = jsonArrayNode["ProductDescription"].stringValue
+                    
+                    
+                    do {
+                        let entity = NSEntityDescription.insertNewObjectForEntityForName("ProductEntity", inManagedObjectContext: self.managedObjectContext) as! ProductEntity
+                        
+                        entity.setValue(productID, forKey: "productID")
+                        entity.setValue(productName, forKey: "productName")
+                        entity.setValue(productDescription, forKey: "productDescription")
+                        
+                        try self.managedObjectContext.save()
+                        
+                    } catch {
+                        fatalError("Failure to save context: \(error)")
+                    }
+                }
+                completionHandler(true)
+            }
+            else{
+                completionHandler(false)
+            }
+            
+        }
+    }
+    
+    func deleteAllData()
+    {
+        let productFetch = NSFetchRequest(entityName: "ProductEntity")
+        do{
+            let entity = try managedObjectContext.executeFetchRequest(productFetch) as! [ProductEntity]
+            for product in entity{
+                managedObjectContext.deleteObject(product)
+            }
+            try managedObjectContext.save()
+        }catch{
+            print(error)
+        }
+    }
 
     /*
     // MARK: - Navigation
