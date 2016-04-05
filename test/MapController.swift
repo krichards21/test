@@ -8,12 +8,14 @@
 
 import MapKit
 import CoreLocation
+import CoreData
 
 class MapController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UISearchBarDelegate {
     let locationManager = CLLocationManager()
         @IBOutlet weak var locationMap: MKMapView!
         @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var listBtn: UIButton!
+    let managedObjectContext = DataController().managedObjectContext
     
     let addressArray = [
         "607 Market Street, CA 94105",
@@ -33,11 +35,23 @@ class MapController: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
         self.locationManager.delegate = self
         searchBar.delegate = self
         searchBar.returnKeyType = UIReturnKeyType.Done
+        loadLocations()
         
-        
-        for address in addressArray {
-            getPlacemarkFromAddress(address)
-        }
+//        for address in addressArray {
+//            getPlacemarkFromAddress(address)
+//        }
+        for location in fetchedLocation{
+            if let address1 = location.valueForKey("address1"),
+
+                let city = location.valueForKey("city"),
+                let state = location.valueForKey("state"),
+                let postalCode = location.valueForKey("postalCode"){
+            var address = (address1 as! String) + ", " + (city as! String)
+                address += ", " + (state as! String) + " " + (postalCode as! String)
+                getPlacemarkFromAddress(address)
+                            }
+                        }
+
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -63,6 +77,16 @@ class MapController: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
 //    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 //        return UITableViewCell()
 //    }
+    func loadLocations(){
+        let locationFetch = NSFetchRequest(entityName: "LocationEntity")
+        do{
+            
+            fetchedLocation = try managedObjectContext.executeFetchRequest(locationFetch) as! [SWLocation]
+        }catch{
+            fatalError("ooooo \(error)")
+        }
+    }
+    
     
     func locationAuthStatus(){
         if CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse {
@@ -128,13 +152,35 @@ class MapController: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         if searchBar.text == nil || searchBar.text == "" {
             inSearchmode = false
-            //collection.reloadData()
+            for location in fetchedLocation{
+                if let address1 = location.valueForKey("address1"),
+                    
+                    let city = location.valueForKey("city"),
+                    let state = location.valueForKey("state"),
+                    let postalCode = location.valueForKey("postalCode"){
+                    var address = (address1 as! String) + ", " + (city as! String)
+                    address += ", " + (state as! String) + " " + (postalCode as! String)
+                    self.locationMap.removeAnnotations(self.locationMap.annotations)
+                    getPlacemarkFromAddress(address)
+                }
+            }
             view.endEditing(true)
         }else{
             inSearchmode = true
             let lower = searchBar.text!.lowercaseString
             filteredLocations = fetchedLocation.filter({$0.locationName!.lowercaseString.rangeOfString(lower) != nil})
-            //collection.reloadData()
+            for location in filteredLocations{
+                if let address1 = location.valueForKey("address1"),
+                    
+                    let city = location.valueForKey("city"),
+                    let state = location.valueForKey("state"),
+                    let postalCode = location.valueForKey("postalCode"){
+                    var address = (address1 as! String) + ", " + (city as! String)
+                    address += ", " + (state as! String) + " " + (postalCode as! String)
+                    self.locationMap.removeAnnotations(self.locationMap.annotations)
+                    getPlacemarkFromAddress(address)
+                }
+            }
         }
     }
 }
