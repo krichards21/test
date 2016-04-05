@@ -119,6 +119,10 @@ class MapController: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
             }
         }
     }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        view.endEditing(true)
+    }
 
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
