@@ -77,6 +77,12 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Welcome Kimate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EiL-jP-QQr">
+                                <rect key="frame" x="25" y="617" width="203" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kZT-w6-QIr" userLabel="inventorySurveyBtn">
                                 <rect key="frame" x="25" y="81" width="156" height="134"/>
                                 <state key="normal" image="1459995067_office-15"/>
@@ -270,7 +276,7 @@
                                 <rect key="frame" x="271" y="615" width="94" height="32"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.30196078430000001" green="0.16862745100000001" blue="0.062745098040000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="mNY-Jl-z8n" secondAttribute="trailing" constant="8" id="2vb-sb-UNv"/>
                             <constraint firstItem="Bh5-fI-3im" firstAttribute="top" secondItem="mNY-Jl-z8n" secondAttribute="bottom" constant="18" id="KFn-Qk-ayC"/>
@@ -309,7 +315,6 @@
                                 <rect key="frame" x="12" y="141" width="347" height="425"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="396" id="WOH-ux-hag"/>
                                     <constraint firstAttribute="height" constant="425" id="mad-xT-N38"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="AKX-Jc-cT9">
@@ -386,7 +391,7 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
-                                        <color key="backgroundColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.81176470590000005" green="0.72156862749999995" blue="0.63921568630000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="9bh-c6-su2" firstAttribute="centerX" secondItem="MVJ-6H-BzW" secondAttribute="centerX" id="1bv-kv-ZcY"/>
                                             <constraint firstAttribute="bottomMargin" secondItem="Htt-Hj-LwG" secondAttribute="bottom" constant="18" id="371-Xe-7Xq"/>
@@ -442,11 +447,6 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="WOH-ux-hag"/>
-                                    </mask>
-                                </variation>
                             </collectionView>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="ODd-eQ-Qt0">
                                 <rect key="frame" x="20" y="89" width="268" height="44"/>

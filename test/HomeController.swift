@@ -13,6 +13,7 @@ import SwiftyJSON
 
 class HomeController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     @IBOutlet weak var collection: UICollectionView!
+
     let managedObjectContext = DataController().managedObjectContext
     let url = "\(URL_BASE)\(URL_ALERTS_CONTROLLER)"
     var fetchedNews = [NewsEntity]()

@@ -31,11 +31,13 @@ class LocationDetailVC: UIViewController, UIPickerViewDelegate, UIPickerViewData
     let managedObjectContext = DataController().managedObjectContext
     @IBOutlet weak var displaySwtch: UISwitch!
     @IBOutlet weak var productPicker: UIPickerView!
+
     @IBAction func submitBtn(sender: AnyObject) {
     }
     @IBOutlet weak var locationName: UILabel!
     
     var productSelected = 0
+    var selectedDate: String!
     
     
     override func viewDidLoad() {
@@ -45,8 +47,10 @@ class LocationDetailVC: UIViewController, UIPickerViewDelegate, UIPickerViewData
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
         dateFormatter.timeStyle = NSDateFormatterStyle.NoStyle
-        let currentDate = NSDate()
-        dateTxt.text = dateFormatter.stringFromDate(currentDate)
+        let date = NSDate()
+
+        selectedDate = dateFormatter.stringFromDate(date)
+        dateTxt.text = selectedDate
         productPicker.delegate = self
         productPicker.dataSource = self
         
@@ -75,6 +79,7 @@ class LocationDetailVC: UIViewController, UIPickerViewDelegate, UIPickerViewData
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
         dateFormatter.timeStyle = NSDateFormatterStyle.NoStyle
+        selectedDate = dateFormatter.stringFromDate(sender.date)
         dateTxt.text = dateFormatter.stringFromDate(sender.date)
     }
     
@@ -93,10 +98,35 @@ class LocationDetailVC: UIViewController, UIPickerViewDelegate, UIPickerViewData
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         productSelected = row
         // get  date and location
+        let inventoryRequest = NSFetchRequest(entityName: "InventoryEntity")
+        do{
+//            inventoryFetch.predicate = NSPredicate(format: "productID = %@ AND dateCollected = %@", productSelected, selectedDate)
+            let locationPred = NSPredicate(format: "productID == \(productSelected) AND dateCollected == %@", selectedDate)
+            inventoryRequest.predicate = locationPred
+            let fetchedInventory = try managedObjectContext.executeFetchRequest(inventoryRequest) as! [InventoryEntity]
+            for inv in fetchedInventory
+            {
+                print (inv.dateCollected)
+            }
+        }catch{
+            fatalError("Could not fetch data: \(error)")
+        }
     }
     
     @IBAction func submitButtonClicked(sender: AnyObject) {
-        
+        do{
+        let entity = NSEntityDescription.insertNewObjectForEntityForName("InventoryEntity", inManagedObjectContext: self.managedObjectContext) as! InventoryEntity
+            
+            entity.setValue(coldSwtch.on, forKey: "displayBrands")
+            entity.setValue(productSelected, forKey: "productID")
+            entity.setValue(location.locationID, forKey: "locationID")
+            entity.setValue(selectedDate, forKey: "dateCollected")
+            
+            try self.managedObjectContext.save()
+            
+        }catch{
+            fatalError("Failure to save context: \(error)")
+        }
     }
     
     func loadProducts(){
