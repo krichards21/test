@@ -14,36 +14,54 @@ import SwiftyJSON
 class HomeController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     @IBOutlet weak var collection: UICollectionView!
     let managedObjectContext = DataController().managedObjectContext
-    let url = "\(URL_BASE)\(URL_LOCATION_CONTROLLER)"
+    let url = "\(URL_BASE)\(URL_ALERTS_CONTROLLER)"
     var fetchedNews = [NewsEntity]()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.setHidesBackButton(true, animated: false)
         
+        self.deleteAllData()
+        
+        downloadNews(){ completion in
+            if completion {
+                self.loadNews()
+            }
+        }
+        
         collection.delegate = self
         collection.dataSource = self
         }
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
-    }
-    
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCellWithReuseIdentifier("NewsFeedCell", forIndexPath: indexPath) as? NewsFeedCell{
             
-            cell.configureNewsFeedCell(fetchedNews[indexPath.row])
+            var news: NewsEntity!
+                news = fetchedNews[indexPath.row]
+            
+            cell.configureNewsFeedCell(news)
+            
             return cell
-        }else{
+        }else {
             return UICollectionViewCell()
         }
     }
     
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 1
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+//        let news: NewsEntity!
+//        if inSearchmode{
+//            location = filteredLocations[indexPath.row]
+//        }else{
+//            location = self.fetchedLocation[indexPath.row]
+//        }
+        //performSegueWithIdentifier("LocationDetailVC", sender: location)
     }
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return fetchedNews.count
+    }
+    
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return 1
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
@@ -58,8 +76,8 @@ class HomeController: UIViewController, UICollectionViewDelegate, UICollectionVi
         let newsFetch = NSFetchRequest(entityName: "NewsEntity")
         do{
             let entity = try managedObjectContext.executeFetchRequest(newsFetch) as! [NewsEntity]
-            for location in entity{
-                managedObjectContext.deleteObject(location)
+            for news in entity{
+                managedObjectContext.deleteObject(news)
             }
             try managedObjectContext.save()
         }catch{
@@ -67,8 +85,19 @@ class HomeController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
     }
     
+    func loadNews(){
+        let newsFetch = NSFetchRequest(entityName: "NewsEntity")
+        do{
+            
+            fetchedNews = try managedObjectContext.executeFetchRequest(newsFetch) as! [NewsEntity]
+            collection.reloadData()
+        }catch{
+            fatalError("ooooo \(error)")
+        }
+    }
+    
     func downloadNews(completionHandler:(Bool) -> ()){
-        let locationURL = NSURL(string: "\(URL_BASE)news/getnews/")!
+        let locationURL = NSURL(string: "\(URL_BASE)alerts/getalerts/1")!
         let parameters = [
             "ServiceProvider": SERVICE_PROVIDER
         ]
@@ -80,34 +109,17 @@ class HomeController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 let json = JSON(response.result.value!)
                 for jsonArrayNode in json.array!
                 {
-                    let locationName = jsonArrayNode["LocationName"].stringValue
-                    let locationID = jsonArrayNode["LocationID"].intValue
-                    let imageURL = jsonArrayNode["ImageURL"].stringValue
-                    let address1 = jsonArrayNode["Address1"].stringValue
-                    let address2 = jsonArrayNode["Address2"].stringValue
-                    let address3 = jsonArrayNode["Address3"].stringValue
-                    let city = jsonArrayNode["City"].stringValue
-                    let state = jsonArrayNode["State"].stringValue
-                    let postalCode = jsonArrayNode["PostalCode"].stringValue
-                    let hoursStart = jsonArrayNode["HourStart"].stringValue
-                    let hoursEnd = jsonArrayNode["HourEnd"].stringValue
-                    
+                    let alertDescription = jsonArrayNode["alertDescription"].stringValue
+                    let alertType = jsonArrayNode["alertType"].boolValue
+                    let dateNews = jsonArrayNode["dateNews"].stringValue
                     
                     
                     do {
                         let entity = NSEntityDescription.insertNewObjectForEntityForName("NewsEntity", inManagedObjectContext: self.managedObjectContext) as! NewsEntity
                         
-                        entity.setValue(locationID, forKey: "locationID")
-                        entity.setValue(locationName, forKey: "locationName")
-                        entity.setValue(imageURL, forKey: "imageURL")
-                        entity.setValue(address1, forKey: "address1")
-                        entity.setValue(address2, forKey: "address2")
-                        entity.setValue(address3, forKey: "address3")
-                        entity.setValue(city, forKey: "city")
-                        entity.setValue(state, forKey: "state")
-                        entity.setValue(postalCode, forKey: "postalCode")
-                        entity.setValue(hoursStart, forKey: "hoursStart")
-                        entity.setValue(hoursEnd, forKey: "hoursEnd")
+                        entity.setValue(alertDescription, forKey: "alertDescription")
+                        entity.setValue(alertType, forKey: "alertType")
+                        entity.setValue(getDateFunction(dateNews), forKey: "dateNews")
                         
                         try self.managedObjectContext.save()
                         

@@ -13,8 +13,8 @@ class NewsFeedCell: UICollectionViewCell {
     var news: NewsEntity!
 
     @IBOutlet weak var newsFeedDescription: UILabel!
-    @IBOutlet weak var newfeedDate: UILabel!
-    @IBOutlet weak var newsfeedAlertImage: UIImageView!
+    @IBOutlet weak var newsFeedDate: UILabel!
+    @IBOutlet weak var newsFeedAlertImage: UIImageView!
     
     
     required init?(coder aDecoder: NSCoder){
@@ -23,6 +23,14 @@ class NewsFeedCell: UICollectionViewCell {
     }
     
     func configureNewsFeedCell(news: NewsEntity){
-        
+        if news.alertType == true
+        {
+            newsFeedAlertImage.image = UIImage(named:"1460070719_caution.png")
+        }
+        else{
+            newsFeedAlertImage.image = UIImage(named:"1460070737_news.png")
+        }
+        newsFeedDate.text = news.dateNews?.description
+        newsFeedDescription.text = news.alertDescription
     }
 }

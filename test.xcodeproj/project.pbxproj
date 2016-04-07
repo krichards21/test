@@ -32,6 +32,7 @@
 		78EEDC161CB5BB3800646730 /* NewsFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EEDC151CB5BB3800646730 /* NewsFeedCell.swift */; };
 		78EEDC191CB5BED100646730 /* NewsEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EEDC171CB5BED100646730 /* NewsEntity+CoreDataProperties.swift */; };
 		78EEDC1A1CB5BED100646730 /* NewsEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EEDC181CB5BED100646730 /* NewsEntity.swift */; };
+		78EEDC1C1CB6CBBD00646730 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EEDC1B1CB6CBBD00646730 /* Functions.swift */; };
 		C762A7047243CB6B03CC7A97 /* Pods_test.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3C517497590F4C4B95AD545 /* Pods_test.framework */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +66,7 @@
 		78EEDC151CB5BB3800646730 /* NewsFeedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsFeedCell.swift; sourceTree = "<group>"; };
 		78EEDC171CB5BED100646730 /* NewsEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NewsEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		78EEDC181CB5BED100646730 /* NewsEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsEntity.swift; sourceTree = "<group>"; };
+		78EEDC1B1CB6CBBD00646730 /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		C3C517497590F4C4B95AD545 /* Pods_test.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_test.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -117,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				781875031C98ABE20009ADAD /* Constaints.swift */,
+				78EEDC1B1CB6CBBD00646730 /* Functions.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 				7828C2001C73FED40095F80E /* ViewController.swift in Sources */,
 				78EEDC1A1CB5BED100646730 /* NewsEntity.swift in Sources */,
 				78EEDC0A1CB317E100646730 /* MapController.swift in Sources */,
+				78EEDC1C1CB6CBBD00646730 /* Functions.swift in Sources */,
 				78EEDC131CB4847E00646730 /* ProductEntity+CoreDataProperties.swift in Sources */,
 				78EEDC191CB5BED100646730 /* NewsEntity+CoreDataProperties.swift in Sources */,
 				781875041C98ABE20009ADAD /* Constaints.swift in Sources */,

@@ -13,5 +13,6 @@ let URL_LOCATION_CONTROLLER = "location"
 let URL_PRODUCT_CONTROLLER = "product"
 
 let URL_INVENTORY_CONTROLLER = "inventory"
+let URL_ALERTS_CONTROLLER = "alerts"
 typealias DownloadComplete = () -> ()
 let SERVICE_PROVIDER = 1

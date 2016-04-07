@@ -35,6 +35,7 @@
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="xh3-F9-XzC">
                                 <rect key="frame" x="20" y="413" width="341" height="186"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Nzs-5H-9Vt">
                                     <size key="itemSize" width="279.5" height="117"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -55,7 +56,7 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5HD-uk-EHe" userLabel="alertImage">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="1460070737_news" translatesAutoresizingMaskIntoConstraints="NO" id="5HD-uk-EHe" userLabel="alertImage">
                                                     <rect key="frame" x="8" y="34" width="102" height="75"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="03/06/2016" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cs1-Rg-uJh" userLabel="dateLbl">
@@ -69,9 +70,9 @@
                                         </view>
                                         <color key="backgroundColor" red="0.30196078430000001" green="0.16862745100000001" blue="0.062745098040000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
-                                            <outlet property="newfeedDate" destination="cs1-Rg-uJh" id="Rjz-zv-s2C"/>
+                                            <outlet property="newsFeedAlertImage" destination="5HD-uk-EHe" id="HzC-CA-jUe"/>
+                                            <outlet property="newsFeedDate" destination="cs1-Rg-uJh" id="a0W-nv-2iJ"/>
                                             <outlet property="newsFeedDescription" destination="IBd-eO-R2Y" id="nMx-Mf-h0p"/>
-                                            <outlet property="newsfeedAlertImage" destination="5HD-uk-EHe" id="vnD-OA-Eug"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -653,9 +654,9 @@
                         <outlet property="cbfTxt" destination="r6J-Sm-aFJ" id="Phl-NX-Mi7"/>
                         <outlet property="classTxt" destination="H1p-u5-rni" id="ooJ-aK-tJs"/>
                         <outlet property="clusterTxt" destination="sFM-Jn-ZrW" id="bzF-Hb-Zmd"/>
-                        <outlet property="coldRdoBtn" destination="rHx-UJ-Mg1" id="KwD-J8-e05"/>
+                        <outlet property="coldSwtch" destination="lZu-Av-Nwg" id="7vY-SG-6gV"/>
                         <outlet property="dateTxt" destination="HeD-S4-wyM" id="X8e-Rs-ewI"/>
-                        <outlet property="displayRdoBtn" destination="lZu-Av-Nwg" id="M1N-0H-Nvn"/>
+                        <outlet property="displaySwtch" destination="rHx-UJ-Mg1" id="Ovf-Aw-KkR"/>
                         <outlet property="displayTxt" destination="O13-e9-7rm" id="oeN-Dm-Cw3"/>
                         <outlet property="largestTxt" destination="rC9-VD-cyD" id="Wyy-ld-2mv"/>
                         <outlet property="podTxt" destination="yah-er-3js" id="PZL-YT-4KF"/>
@@ -695,6 +696,7 @@
         <image name="1459995067_office-15" width="128" height="128"/>
         <image name="1459995106_Pie_chart" width="128" height="128"/>
         <image name="1459995681_wine" width="128" height="128"/>
+        <image name="1460070737_news" width="128" height="128"/>
         <image name="designmindlogo" width="300" height="120"/>
         <image name="regal-logo" width="960" height="210"/>
     </resources>
