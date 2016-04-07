@@ -27,6 +27,7 @@ class HomeController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 self.loadNews()
             }
         }
+        collection.layer.cornerRadius = 5
         
         collection.delegate = self
         collection.dataSource = self
@@ -90,6 +91,7 @@ class HomeController: UIViewController, UICollectionViewDelegate, UICollectionVi
         do{
             
             fetchedNews = try managedObjectContext.executeFetchRequest(newsFetch) as! [NewsEntity]
+            
             collection.reloadData()
         }catch{
             fatalError("ooooo \(error)")
@@ -109,9 +111,9 @@ class HomeController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 let json = JSON(response.result.value!)
                 for jsonArrayNode in json.array!
                 {
-                    let alertDescription = jsonArrayNode["alertDescription"].stringValue
-                    let alertType = jsonArrayNode["alertType"].boolValue
-                    let dateNews = jsonArrayNode["dateNews"].stringValue
+                    let alertDescription = jsonArrayNode["Description"].stringValue
+                    let alertType = jsonArrayNode["AlertType"].boolValue
+                    let dateNews = jsonArrayNode["CreateDate"].stringValue
                     
                     
                     do {
@@ -120,7 +122,6 @@ class HomeController: UIViewController, UICollectionViewDelegate, UICollectionVi
                         entity.setValue(alertDescription, forKey: "alertDescription")
                         entity.setValue(alertType, forKey: "alertType")
                         entity.setValue(getDateFunction(dateNews), forKey: "dateNews")
-                        
                         try self.managedObjectContext.save()
                         
                     } catch {

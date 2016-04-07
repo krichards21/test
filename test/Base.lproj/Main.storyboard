@@ -50,10 +50,10 @@
                                             <rect key="frame" x="0.0" y="0.0" width="279.5" height="117"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Alert" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IBd-eO-R2Y" userLabel="alertDescription">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Alert" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IBd-eO-R2Y" userLabel="alertDescription">
                                                     <rect key="frame" x="125" y="14" width="141" height="95"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.30196078430000001" green="0.16862745100000001" blue="0.062745098040000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="1460070737_news" translatesAutoresizingMaskIntoConstraints="NO" id="5HD-uk-EHe" userLabel="alertImage">
@@ -68,7 +68,7 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
-                                        <color key="backgroundColor" red="0.30196078430000001" green="0.16862745100000001" blue="0.062745098040000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.81176470590000005" green="0.72156862749999995" blue="0.63921568630000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <outlet property="newsFeedAlertImage" destination="5HD-uk-EHe" id="HzC-CA-jUe"/>
                                             <outlet property="newsFeedDate" destination="cs1-Rg-uJh" id="a0W-nv-2iJ"/>

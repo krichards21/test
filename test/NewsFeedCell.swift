@@ -20,6 +20,8 @@ class NewsFeedCell: UICollectionViewCell {
     required init?(coder aDecoder: NSCoder){
         super.init(coder: aDecoder)
         layer.cornerRadius = 5.0
+        layer.borderWidth = 2.0
+        layer.borderColor = UIColor.blackColor().CGColor
     }
     
     func configureNewsFeedCell(news: NewsEntity){
