@@ -14,17 +14,27 @@ import SwiftyJSON
 class LocationDetailVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     @IBOutlet weak var dateTxt: UITextField!
     var location: SWLocation!
+    @IBOutlet weak var clusterTxt: UITextField!
     var fetchedProduct = [ProductEntity]()
+    @IBOutlet weak var cbfTxt: UITextField!
+    @IBOutlet weak var schematicTxt: UITextField!
+    @IBOutlet weak var largestTxt: UITextField!
+    @IBOutlet weak var classTxt: UITextField!
+    @IBOutlet weak var submitReportBtn: UIButton!
+    @IBOutlet weak var podTxt: UITextField!
+    @IBOutlet weak var totalCasesTxt: UITextField!
+    @IBOutlet weak var displayTxt: UITextField!
+    @IBOutlet weak var coldSwtch: UISwitch!
     
     let url = "\(URL_BASE)\(URL_PRODUCT_CONTROLLER)"
     
     let managedObjectContext = DataController().managedObjectContext
+    @IBOutlet weak var displaySwtch: UISwitch!
     @IBOutlet weak var productPicker: UIPickerView!
     @IBAction func submitBtn(sender: AnyObject) {
     }
     @IBOutlet weak var locationName: UILabel!
     
-    var productArray = ["Kendall Wines", "Jackson Wines", "White Wines"]
     var productSelected = 0
     
     
@@ -82,6 +92,7 @@ class LocationDetailVC: UIViewController, UIPickerViewDelegate, UIPickerViewData
 
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         productSelected = row
+        // get  date and location
     }
     
     @IBAction func submitButtonClicked(sender: AnyObject) {

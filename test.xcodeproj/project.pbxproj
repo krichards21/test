@@ -29,6 +29,9 @@
 		78EEDC0E1CB46E3300646730 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EEDC0D1CB46E3300646730 /* HomeController.swift */; };
 		78EEDC131CB4847E00646730 /* ProductEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EEDC111CB4847E00646730 /* ProductEntity+CoreDataProperties.swift */; };
 		78EEDC141CB4847E00646730 /* ProductEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EEDC121CB4847E00646730 /* ProductEntity.swift */; };
+		78EEDC161CB5BB3800646730 /* NewsFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EEDC151CB5BB3800646730 /* NewsFeedCell.swift */; };
+		78EEDC191CB5BED100646730 /* NewsEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EEDC171CB5BED100646730 /* NewsEntity+CoreDataProperties.swift */; };
+		78EEDC1A1CB5BED100646730 /* NewsEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EEDC181CB5BED100646730 /* NewsEntity.swift */; };
 		C762A7047243CB6B03CC7A97 /* Pods_test.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3C517497590F4C4B95AD545 /* Pods_test.framework */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +62,9 @@
 		78EEDC0D1CB46E3300646730 /* HomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		78EEDC111CB4847E00646730 /* ProductEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ProductEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		78EEDC121CB4847E00646730 /* ProductEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductEntity.swift; sourceTree = "<group>"; };
+		78EEDC151CB5BB3800646730 /* NewsFeedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsFeedCell.swift; sourceTree = "<group>"; };
+		78EEDC171CB5BED100646730 /* NewsEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NewsEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		78EEDC181CB5BED100646730 /* NewsEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsEntity.swift; sourceTree = "<group>"; };
 		C3C517497590F4C4B95AD545 /* Pods_test.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_test.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -86,6 +92,8 @@
 		781874F01C933B990009ADAD /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				78EEDC171CB5BED100646730 /* NewsEntity+CoreDataProperties.swift */,
+				78EEDC181CB5BED100646730 /* NewsEntity.swift */,
 				78EEDC111CB4847E00646730 /* ProductEntity+CoreDataProperties.swift */,
 				78EEDC121CB4847E00646730 /* ProductEntity.swift */,
 				78EEDC071CB2F29D00646730 /* SWLocation.swift */,
@@ -100,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				781875001C976F2C0009ADAD /* LocationCell.swift */,
+				78EEDC151CB5BB3800646730 /* NewsFeedCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -306,8 +315,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				7828C2001C73FED40095F80E /* ViewController.swift in Sources */,
+				78EEDC1A1CB5BED100646730 /* NewsEntity.swift in Sources */,
 				78EEDC0A1CB317E100646730 /* MapController.swift in Sources */,
 				78EEDC131CB4847E00646730 /* ProductEntity+CoreDataProperties.swift in Sources */,
+				78EEDC191CB5BED100646730 /* NewsEntity+CoreDataProperties.swift in Sources */,
 				781875041C98ABE20009ADAD /* Constaints.swift in Sources */,
 				781875111C9B73C90009ADAD /* LocationDetailVC.swift in Sources */,
 				781874FA1C9742350009ADAD /* DashboardVC.swift in Sources */,
@@ -320,6 +331,7 @@
 				78EEDC141CB4847E00646730 /* ProductEntity.swift in Sources */,
 				78EEDC081CB2F29D00646730 /* SWLocation.swift in Sources */,
 				78EBA09F1CA45F200053D9AB /* SWInventory.swift in Sources */,
+				78EEDC161CB5BB3800646730 /* NewsFeedCell.swift in Sources */,
 				78EEDC0E1CB46E3300646730 /* HomeController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
