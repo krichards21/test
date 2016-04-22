@@ -15,8 +15,10 @@ class HomeController: UIViewController, UICollectionViewDelegate, UICollectionVi
     @IBOutlet weak var collection: UICollectionView!
 
     let managedObjectContext = DataController().managedObjectContext
+    
     let url = "\(URL_BASE)\(URL_ALERTS_CONTROLLER)"
     var fetchedNews = [NewsEntity]()
+    var userID: Int = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.setHidesBackButton(true, animated: false)
@@ -100,8 +102,8 @@ class HomeController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     func downloadNews(completionHandler:(Bool) -> ()){
-        let locationURL = NSURL(string: "\(URL_BASE)alerts/getalerts/1")!
-        let parameters = [
+        let locationURL = NSURL(string: "\(URL_BASE)alerts/getalerts/\(userID)")!
+        let parameters: [String: AnyObject] = [
             "ServiceProvider": SERVICE_PROVIDER
         ]
         Alamofire.request(.GET, locationURL, parameters: parameters).responseJSON {

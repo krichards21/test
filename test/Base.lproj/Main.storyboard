@@ -9,7 +9,7 @@
         <!--Home Controller-->
         <scene sceneID="DwZ-jf-c6r">
             <objects>
-                <viewController id="KGP-qJ-1RV" customClass="HomeController" customModule="test" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="KGP-qJ-1RV" customClass="HomeController" customModule="test" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gwF-Ky-RaL"/>
                         <viewControllerLayoutGuide type="bottom" id="IBn-Ep-mgd"/>
@@ -181,7 +181,6 @@
                                 </state>
                                 <connections>
                                     <action selector="btnLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fWV-ZL-bik"/>
-                                    <segue destination="KGP-qJ-1RV" kind="show" id="vSS-hj-iip"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Nm-X1-0S0">
@@ -198,6 +197,12 @@
                             <imageView userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="designmindlogo" translatesAutoresizingMaskIntoConstraints="NO" id="DOv-1E-B9z">
                                 <rect key="frame" x="273" y="627" width="94" height="32"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gx0-hV-r13">
+                                <rect key="frame" x="20" y="260" width="287" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.30196078431372547" green="0.16862745098039217" blue="0.062745098039215685" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -229,6 +234,7 @@
                     <navigationItem key="navigationItem" id="Cz5-ef-ug8"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="errorLbl" destination="gx0-hV-r13" id="Ngl-bI-eh4"/>
                         <outlet property="loginBtn" destination="0fL-yq-qdv" id="y3F-GK-B77"/>
                         <outlet property="txtPassword" destination="zbf-a7-CqC" id="Ms2-t2-fsy"/>
                         <outlet property="txtUsername" destination="EXF-VO-5es" id="cAt-WV-FPf"/>
@@ -250,17 +256,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Bh5-fI-3im">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Bh5-fI-3im">
                                 <rect key="frame" x="10" y="136" width="355" height="415"/>
                             </mapView>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="gb8-xR-ZOC">
+                            <searchBar contentMode="redraw" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gb8-xR-ZOC">
                                 <rect key="frame" x="10" y="72" width="268" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="268" id="7lP-bj-2wG"/>
                                 </constraints>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mNY-Jl-z8n">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mNY-Jl-z8n">
                                 <rect key="frame" x="299" y="74" width="52" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="Rz2-zo-ach"/>
@@ -325,7 +331,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="LocationCell" id="GAf-Si-hCC" customClass="LocationCell" customModule="test">
-                                        <rect key="frame" x="36.5" y="64" width="274" height="156"/>
+                                        <rect key="frame" x="36.5" y="0.0" width="274" height="156"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="274" height="156"/>
@@ -448,14 +454,14 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="ODd-eQ-Qt0">
+                            <searchBar contentMode="redraw" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ODd-eQ-Qt0">
                                 <rect key="frame" x="20" y="89" width="268" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="268" id="DKb-Xq-2Ha"/>
                                 </constraints>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dHn-cN-ZX0">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dHn-cN-ZX0">
                                 <rect key="frame" x="310" y="89" width="52" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="35x-Gd-lvt"/>
