@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 import Alamofire
 import SwiftyJSON
+import SwiftKeychainWrapper
 
 class HomeController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     @IBOutlet weak var collection: UICollectionView!
@@ -18,7 +19,7 @@ class HomeController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     let url = "\(URL_BASE)\(URL_ALERTS_CONTROLLER)"
     var fetchedNews = [NewsEntity]()
-    var userID: Int = 0
+    var userID: String = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.setHidesBackButton(true, animated: false)
@@ -40,7 +41,7 @@ class HomeController: UIViewController, UICollectionViewDelegate, UICollectionVi
         if let cell = collectionView.dequeueReusableCellWithReuseIdentifier("NewsFeedCell", forIndexPath: indexPath) as? NewsFeedCell{
             
             var news: NewsEntity!
-                news = fetchedNews[indexPath.row]
+                news = fetchedNews.reverse()[indexPath.row]
             
             cell.configureNewsFeedCell(news)
             
@@ -94,7 +95,6 @@ class HomeController: UIViewController, UICollectionViewDelegate, UICollectionVi
         do{
             
             fetchedNews = try managedObjectContext.executeFetchRequest(newsFetch) as! [NewsEntity]
-            
             collection.reloadData()
         }catch{
             fatalError("ooooo \(error)")
@@ -102,41 +102,78 @@ class HomeController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     func downloadNews(completionHandler:(Bool) -> ()){
-        let locationURL = NSURL(string: "\(URL_BASE)alerts/getalerts/\(userID)")!
-        let parameters: [String: AnyObject] = [
-            "ServiceProvider": SERVICE_PROVIDER
-        ]
-        Alamofire.request(.GET, locationURL, parameters: parameters).responseJSON {
-            response in
-            let result = response.result
-            if result.isSuccess
-            {
-                let json = JSON(response.result.value!)
-                for jsonArrayNode in json.array!
-                {
-                    let alertDescription = jsonArrayNode["Description"].stringValue
-                    let alertType = jsonArrayNode["AlertType"].boolValue
-                    let dateNews = jsonArrayNode["CreateDate"].stringValue
-                    
-                    
-                    do {
-                        let entity = NSEntityDescription.insertNewObjectForEntityForName("NewsEntity", inManagedObjectContext: self.managedObjectContext) as! NewsEntity
-                        
-                        entity.setValue(alertDescription, forKey: "alertDescription")
-                        entity.setValue(alertType, forKey: "alertType")
-                        entity.setValue(getDateFunction(dateNews), forKey: "dateNews")
-                        try self.managedObjectContext.save()
-                        
-                    } catch {
-                        fatalError("Failure to save context: \(error)")
-                    }
-                }
-                completionHandler(true)
-            }
-            else{
-                completionHandler(false)
-            }
+        //let locationURL = NSURL(string: "\(URL_BASE)alerts/getalerts/\(userID)")!
+        let locationURL = NSURL(string: "\(URL_BASE)alerts/getalerts/1")!
+        
+//        let aspUserID = KeychainWrapper.stringForKey("aspUserID")
+//        let accessToken = KeychainWrapper.stringForKey("accessToken")
+        //let headers = [
+            //"ServiceProviderID": "\(SERVICE_PROVIDER)",
+            //"AccessToken": "\(accessToken)",
+            //"UserID" : "\(aspUserID)"
+            
+        //]
+        let request = NSMutableURLRequest(URL: locationURL)
+        request.HTTPMethod = "GET"
+        request.timeoutInterval = 60
+        request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue(KeychainWrapper.stringForKey("aspUserID")!, forHTTPHeaderField: "UserID")
+        request.addValue(KeychainWrapper.stringForKey("accessToken")!, forHTTPHeaderField: "AccessToken")
+        request.addValue("\(SERVICE_PROVIDER)", forHTTPHeaderField: "ServiceProviderID")
+        
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(request)
+        {
+            data, response, error in
+//            print(request.URL)
+//            print(request.HTTPMethod)
+//            print(request.allHTTPHeaderFields)
+//            print(request.HTTPBody)
+            let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
+            //print(responseString)
+            var jsonObjectArray = JSON(responseString!).array!
+            
             
         }
+        task.resume()
+//        Alamofire.request(.GET, locationURL, headers: headers).responseJSON {
+//            response in
+//            let result = response.result
+//            if result.isSuccess
+//            {
+//                let json = JSON(response.result.value!)
+//                var error = false;
+//                if let message = json["Message"].string{
+//                    error = true
+//                }
+//                if (!error)
+//                {
+//                    for jsonArrayNode in json.array!
+//                    {
+//                        let alertDescription = jsonArrayNode["Description"].stringValue
+//                        let alertType = jsonArrayNode["AlertType"].boolValue
+//                        let dateNews = jsonArrayNode["CreateDate"].stringValue
+//                        
+//                        
+//                        do {
+//                            let entity = NSEntityDescription.insertNewObjectForEntityForName("NewsEntity", inManagedObjectContext: self.managedObjectContext) as! NewsEntity
+//                            
+//                            entity.setValue(alertDescription, forKey: "alertDescription")
+//                            entity.setValue(alertType, forKey: "alertType")
+//                            entity.setValue(getDateFunction(dateNews), forKey: "dateNews")
+//                            try self.managedObjectContext.save()
+//                            
+//                        } catch {
+//                            fatalError("Failure to save context: \(error)")
+//                        }
+//                    }
+//                    completionHandler(true)
+//                }
+//            }
+//            else{
+//                completionHandler(false)
+//            }
+        
+        //}
     }
 }
