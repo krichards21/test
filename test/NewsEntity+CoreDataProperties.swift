@@ -1,9 +1,9 @@
 //
 //  NewsEntity+CoreDataProperties.swift
-//  test
+//  
 //
-//  Created by Kimate Richards on 4/6/16.
-//  Copyright © 2016 designmind. All rights reserved.
+//  Created by Kimate Richards on 5/31/16.
+//
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
 //  to delete and recreate this implementation file for your updated model.
@@ -14,8 +14,9 @@ import CoreData
 
 extension NewsEntity {
 
-    @NSManaged var dateNews: NSDate?
-    @NSManaged var alertType: NSNumber?
     @NSManaged var alertDescription: String?
+    @NSManaged var alertType: NSNumber?
+    @NSManaged var dateNews: NSDate?
+    @NSManaged var alertID: NSNumber?
 
 }

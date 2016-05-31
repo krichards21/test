@@ -1,9 +1,9 @@
 //
 //  NewsEntity.swift
-//  test
+//  
 //
-//  Created by Kimate Richards on 4/6/16.
-//  Copyright © 2016 designmind. All rights reserved.
+//  Created by Kimate Richards on 5/31/16.
+//
 //
 
 import Foundation

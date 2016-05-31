@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15E65" minimumToolsVersion="Xcode 7.0">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15F34" minimumToolsVersion="Xcode 7.0">
     <entity name="InventoryEntity" representedClassName=".InventoryEntity" syncable="YES">
         <attribute name="cbf" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="classification" optional="YES" attributeType="String" syncable="YES"/>
@@ -39,6 +39,7 @@
     </entity>
     <entity name="NewsEntity" representedClassName=".NewsEntity" syncable="YES">
         <attribute name="alertDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="alertID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="alertType" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="dateNews" optional="YES" attributeType="Date" syncable="YES"/>
     </entity>
@@ -50,7 +51,7 @@
     <elements>
         <element name="InventoryEntity" positionX="-18" positionY="63" width="128" height="300"/>
         <element name="LocationEntity" positionX="-54" positionY="-9" width="128" height="285"/>
+        <element name="NewsEntity" positionX="-36" positionY="144" width="128" height="105"/>
         <element name="ProductEntity" positionX="-36" positionY="36" width="128" height="90"/>
-        <element name="NewsEntity" positionX="-36" positionY="144" width="128" height="90"/>
     </elements>
 </model>

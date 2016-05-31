@@ -74,18 +74,7 @@ class ViewController: UIViewController {
                 KeychainWrapper.setString(self.AccessTokenID, forKey: "accessToken")
                 
                 completionHandler(true)
-//                KeychainWrapper.removeObjectForKey("aspUserID")
-//                for item in json.dictionaryValue{
-//                    self.UserID = item["AspUserID"].stringValue
-//                    self.AccessTokenID = item["AccessToken"].stringValue
-//                    
-//                    KeychainWrapper.setString(self.UserID, forKey: "aspUserID")
-//                    KeychainWrapper.setString(self.AccessTokenID, forKey: "accessToken")
-//                    
-//                    let retrieveID:String? = KeychainWrapper.stringForKey("aspUserID")
-//                    print(retrieveID)
-//                    completionHandler(true)
-//                }
+
             }
             else{
                 completionHandler(false)
