@@ -64,14 +64,19 @@ class ViewController: UIViewController {
                 let json = JSON(response.result.value!)
                 KeychainWrapper.removeObjectForKey("aspUserID")
                 KeychainWrapper.removeObjectForKey("accessToken")
+                KeychainWrapper.removeObjectForKey("ID")
                 if let username = json["AspUserID"].string{
                     self.UserID = username
                 }
                 if let token = json["AccessToken"].string{
                     self.AccessTokenID = token
                 }
+                if let id = json["ID"].string{
+                    self.UserID = id
+                }
                 KeychainWrapper.setString(self.UserID, forKey: "aspUserID")
                 KeychainWrapper.setString(self.AccessTokenID, forKey: "accessToken")
+                KeychainWrapper.setString(self.UserID, forKey: "ID")
                 
                 completionHandler(true)
 

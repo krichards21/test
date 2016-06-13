@@ -102,8 +102,8 @@ class HomeController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     func downloadNews(completionHandler:(Bool) -> ()){
-        //let locationURL = NSURL(string: "\(URL_BASE)alerts/getalerts/\(userID)")!
-        let locationURL = NSURL(string: "\(URL_BASE)alerts/getalerts/1")!
+        let locationURL = NSURL(string: "\(URL_BASE)alerts/getalerts/\(KeychainWrapper.stringForKey("ID")!)")!
+        //let locationURL = NSURL(string: "\(URL_BASE)alerts/getalerts/1")!
         
         let request = NSMutableURLRequest(URL: locationURL)
         request.HTTPMethod = "GET"

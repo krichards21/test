@@ -260,14 +260,24 @@
                                 <rect key="frame" x="10" y="136" width="355" height="415"/>
                             </mapView>
                             <searchBar contentMode="redraw" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gb8-xR-ZOC">
-                                <rect key="frame" x="10" y="72" width="268" height="44"/>
+                                <rect key="frame" x="72" y="20" width="234" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="268" id="7lP-bj-2wG"/>
                                 </constraints>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
+                            <imageView userInteractionEnabled="NO" alpha="0.40000000596046448" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="designmindlogo" translatesAutoresizingMaskIntoConstraints="NO" id="4OO-JX-urG">
+                                <rect key="frame" x="271" y="615" width="94" height="32"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FMN-zx-ggX">
+                                <rect key="frame" x="21" y="22" width="46" height="30"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <segue destination="KGP-qJ-1RV" kind="show" id="vac-Eg-Smz"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mNY-Jl-z8n">
-                                <rect key="frame" x="299" y="74" width="52" height="44"/>
+                                <rect key="frame" x="313" y="22" width="52" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="Rz2-zo-ach"/>
                                     <constraint firstAttribute="width" constant="52" id="vFV-Wj-23S"/>
@@ -278,9 +288,6 @@
                                     <segue destination="oYA-39-hbE" kind="show" id="bJR-O5-aCU"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" alpha="0.40000000596046448" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="designmindlogo" translatesAutoresizingMaskIntoConstraints="NO" id="4OO-JX-urG">
-                                <rect key="frame" x="271" y="615" width="94" height="32"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.30196078430000001" green="0.16862745100000001" blue="0.062745098040000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -314,10 +321,10 @@
                         <viewControllerLayoutGuide type="bottom" id="taK-6j-Z6b"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleAspectFit" id="xMk-g0-srO">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="RoM-RS-kcE">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="RoM-RS-kcE">
                                 <rect key="frame" x="12" y="141" width="347" height="425"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -455,14 +462,24 @@
                                 </cells>
                             </collectionView>
                             <searchBar contentMode="redraw" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ODd-eQ-Qt0">
-                                <rect key="frame" x="20" y="89" width="268" height="44"/>
+                                <rect key="frame" x="72" y="28" width="233" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="268" id="DKb-Xq-2Ha"/>
                                 </constraints>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
+                            <imageView userInteractionEnabled="NO" alpha="0.40000000596046448" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="designmindlogo" translatesAutoresizingMaskIntoConstraints="NO" id="e1v-xX-qdY">
+                                <rect key="frame" x="268" y="623" width="94" height="32"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qTu-A6-CQZ">
+                                <rect key="frame" x="20" y="28" width="46" height="30"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <segue destination="KGP-qJ-1RV" kind="show" id="eVq-xn-wTj"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dHn-cN-ZX0">
-                                <rect key="frame" x="310" y="89" width="52" height="44"/>
+                                <rect key="frame" x="310" y="28" width="52" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="35x-Gd-lvt"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="Hbk-I5-AEa"/>
@@ -473,12 +490,10 @@
                                     <segue destination="dM2-ao-QO8" kind="show" id="F7P-TZ-NTE"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" alpha="0.40000000596046448" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="designmindlogo" translatesAutoresizingMaskIntoConstraints="NO" id="e1v-xX-qdY">
-                                <rect key="frame" x="268" y="623" width="94" height="32"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.30196078430000001" green="0.16862745100000001" blue="0.062745098040000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="qTu-A6-CQZ" firstAttribute="leading" secondItem="xMk-g0-srO" secondAttribute="leadingMargin" id="1GH-6h-fds"/>
                             <constraint firstItem="dHn-cN-ZX0" firstAttribute="leading" secondItem="ODd-eQ-Qt0" secondAttribute="trailing" constant="22" id="8Y1-QD-vVU"/>
                             <constraint firstAttribute="trailingMargin" secondItem="RoM-RS-kcE" secondAttribute="trailing" id="9aW-PC-E7A"/>
                             <constraint firstItem="RoM-RS-kcE" firstAttribute="trailing" secondItem="xMk-g0-srO" secondAttribute="trailingMargin" id="DXs-8k-HqM"/>
@@ -493,6 +508,7 @@
                             <constraint firstItem="RoM-RS-kcE" firstAttribute="leading" secondItem="xMk-g0-srO" secondAttribute="leadingMargin" id="jrM-FL-AJs"/>
                             <constraint firstAttribute="trailingMargin" secondItem="RoM-RS-kcE" secondAttribute="trailing" constant="4" id="spV-Zs-apS"/>
                             <constraint firstItem="ODd-eQ-Qt0" firstAttribute="top" secondItem="Xwg-2A-j2d" secondAttribute="bottom" constant="25" id="twa-2k-FtG"/>
+                            <constraint firstItem="ODd-eQ-Qt0" firstAttribute="top" secondItem="qTu-A6-CQZ" secondAttribute="bottom" constant="31" id="u0m-gf-DjD"/>
                             <constraint firstItem="taK-6j-Z6b" firstAttribute="top" secondItem="RoM-RS-kcE" secondAttribute="bottom" constant="57" id="vMN-Hh-zOv"/>
                         </constraints>
                         <variation key="default">
@@ -521,7 +537,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ltx-ps-Hcb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1493.5" y="298.5"/>
+            <point key="canvasLocation" x="1588" y="593"/>
         </scene>
         <!--Location DetailVC-->
         <scene sceneID="WDI-E6-v6i">
@@ -532,7 +548,7 @@
                         <viewControllerLayoutGuide type="bottom" id="55v-UN-irx"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="gCm-EX-77L">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1iR-8L-udc">
@@ -681,7 +697,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HMa-3M-eci" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2076.5" y="277.5"/>
+            <point key="canvasLocation" x="2234" y="326"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="1Zs-Wp-luA">
@@ -714,6 +730,7 @@
         <image name="regal-logo" width="960" height="210"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="PG0-ME-jhe"/>
+        <segue reference="clu-Ry-Xv5"/>
+        <segue reference="eVq-xn-wTj"/>
     </inferredMetricsTieBreakers>
 </document>
